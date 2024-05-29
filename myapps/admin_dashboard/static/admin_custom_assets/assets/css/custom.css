@@ -1,0 +1,37 @@
+#site-name {
+    text-align: center;
+}
+#site-name > a{
+    font-size: 16px;
+    color: #fff;
+    text-align: center !important;
+    word-break: break-all;
+}
+table thead th {
+    color: #fff;
+}
+table thead th a {
+    color: #fff;
+}
+/* .actions > label > select {
+    width: 100%;
+    border: 1px solid #757373;
+    height: 28.5px;
+} */
+
+input[type="text"],
+input[type="number"],
+input[type="file"], 
+select{
+    border-radius: 0;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+}
+/* Style for focused input */
+input:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

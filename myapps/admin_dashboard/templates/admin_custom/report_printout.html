@@ -1,0 +1,161 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+{% load djmoney %}
+{% load humanize %}
+
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card" id="print_area">
+    <!-- start -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="invoice-title">
+                            <h4 class="float-right font-size-15">
+                                Invoice #{{sale_object.sales_hash}}
+                                <!-- <span class="badge bg-success font-size-12 ms-2">Paid</span> -->
+                            </h4>
+                            <div class="mb-4">
+                                <h3 class="mb-1">
+                                    <b>EUROPE INVENTORY SHOP</b>
+                                </h3>
+                            </div>
+                            <div class="text-muted">
+                                <p class="mb-1">3184 Spruce Drive Pittsburgh, PA 15201</p>
+                                <p class="mb-1">
+                                    <i class="uil uil-envelope-alt me-1"></i>
+                                    xyz@987.com
+                                </p>
+                                <p>
+                                    <i class="uil uil-phone me-1"></i>
+                                    012-345-6789
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="text-muted">
+                                    <h5 class="font-size-16 mb-3">
+                                        Billed To:
+                                    </h5>
+                                    <h5 class="font-size-15 mb-2">
+                                        <b>{{sale_object.client.get_fullname}}</b>
+                                    </h5>
+                                    <p class="mb-1">
+                                        <b>{{sale_object.client.get_address}}</b>
+                                    </p>
+                                    <p class="mb-1">
+                                        <b>{{sale_object.client.email}}</b>
+                                    </p>
+                                    <p>
+                                        <b>{{sale_object.client.phone}}</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-sm-6">
+                                <div class="text-muted text-right">
+                                    <div class="mt-4">
+                                        <h5 class="font-size-15 mb-1">
+                                            <b>Invoice Date:</b>
+                                        </h5>
+                                        <p>{{sale_object.sale_date_tracker}}</p>
+                                    </div>
+                                    <div class="mt-4">
+                                        <h5 class="font-size-15 mb-1">Mode Of Payment:</h5>
+                                        <p>
+                                            <b>{{sale_object.mode_of_payment}}</b>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        <div class="py-2">
+                            <h5 class="font-size-15">Order Summary</h5>
+                            <div class="table-responsive">
+                                <table class="table align-middle table-nowrap table-centered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 70px;">No.</th>
+                                            <th>Item</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- end thead -->
+                                    <tbody>
+                                        {% for item in sale_object.getSalesItem %}
+                                        {% show_total number=item.total_price as totalamount  %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td>
+                                                <div>
+                                                    <h5 class="text-truncate font-size-14 mb-1">{{item.product.name}}</h5>
+                                                </div>
+                                            </td>
+                                            <td>{{item.quantity}}</td>
+                                            <td>&#8358; {{item.total_price|intcomma}}</td>
+                                        </tr>
+                                        <!-- end tr -->
+                                        {% endfor %}
+                                        <tr>
+                                            <th colspan="3" class="border-0 text-end">
+                                                <small>
+                                                    <b>Total</b>
+                                                </small>
+                                            </th>
+                                            <td class="border-0 text-end">
+                                                <small class="m-0 fw-semibold">
+                                                    <b>{% money_localize sale_object.get_total 'NGN' %}</b>
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <!-- end tr -->
+                                    </tbody>
+                                    <!-- end tbody -->
+                                </table>
+                                <!-- end table -->
+                            </div>
+                            <!-- end table responsive -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- print start -->
+        <div class="d-print-none mt-2">
+            <div class="float-end">
+                <button type="button" class="btn btn-dark me-1" onclick="printDiv('print_area')">
+                    <i class="fa fa-print"></i>
+                    Print
+                </button>
+                <a href="#" class="btn btn-primary w-md">
+                    <i class=" icon-paper-plane"></i>
+                    Send
+                </a>
+            </div>
+        </div>
+        <!-- print end -->
+    </div>
+    <!-- end -->
+</div>
+<script>
+    function printDiv(divId) {
+        var printContents = document.getElementById(divId).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,144 @@
+{% extends "admin_custom/base.html" %}
+{% load static %}
+
+
+{% load admin_custom_template_tags %}
+
+{% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
+
+
+{% block extrahead %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="{% static 'admin_custom_assets/multiselect/dist/js/multiselect.min.js' %}"></script>
+{% endblock extrahead %}
+
+{% block content %}
+
+<div class="col-lg-12  mb-4">
+    <h3>Student Promotion Section</h3>
+</div>
+<div class="container">
+    <form action="{% url 'admin_dashboard:studentpromotion' %}"  method="post" id="group_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-5">
+                    <!-- <center><<<</center> -->
+                    <div class="row mb-2">
+                        <div class="col-lg-6">
+                            <caption>Class</caption>
+                            <select name="from_classes" class="form-control form-control-sm" id="id_classes" required>
+                                <option selected disabled>Choose</option>
+                                {% for clx in classes  %}
+                                  <option value="{{clx.id}}" title="{{clx.name}}">{{clx.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <caption>Sections</caption>
+                            <select name="from_sections" onchange="loadStudents()" class="form-control form-control-sm" id="id_sections" required></select>
+                        </div>
+                        
+                    </div>
+                    <select id="promotion_old" name="promotion_old" style="height: 360px;" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
+                   
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <div  class="text-center" style="margin: 100px 0 100px 0;">
+                        <button type="button" id="right_All_1" class="btn btn-block btn-primary">
+                            <i class="glyphicon glyphicon-forward"></i>
+                            >>>
+                        </button>
+                        <button type="button" id="right_Selected_1" class="btn btn-block  btn-dark">
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                            >>
+                        </button>
+                        <button type="button" id="left_Selected_1" class="btn btn-block btn-primary">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            <<
+                        </button>
+                        <button type="button" id="left_All_1" class="btn btn-block btn-dark">
+                            <i class="glyphicon glyphicon-backward"></i>
+                            <<<
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row mb-2">
+                        <div class="col-lg-6">
+                            <caption>Class</caption>
+                            <select required name="to_classes" class="form-control form-control-sm" id="to_id_classes">
+                                <option selected disabled>Choose</option>
+                                {% for clx in classes  %}
+                                  <option value="{{clx.id}}" title="{{clx.name}}">{{clx.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <caption>Sections</caption>
+                            <select  required name="to_sections" class="form-control form-control-sm" id="to_id_sections">
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <select name="promotion" style="height: 360px;" id="multiselect_to_1" class="form-control" size="8" multiple="multiple"></select>
+                </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+                <button class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    jQuery(document).ready(function($) {
+        $('.multiselect').multiselect();
+})
+</script>
+
+
+<script>
+    document.getElementById('id_classes').addEventListener('change', async function (el) { 
+            const id = el.target.value;
+            const location = document.location.origin;
+            const url = `${location}/api/{{setting.api_version}}/utilities/loadhtmlclasssections/${id}/`;
+            // 
+            const post_data = await fetch(url);
+            const result = await post_data.json();
+            document.getElementById('id_sections').innerHTML = result.message;
+     }, false)
+
+     document.getElementById('to_id_classes').addEventListener('change', async function (el) { 
+            const id = el.target.value;
+            const location = document.location.origin;
+            const url = `${location}/api/{{setting.api_version}}/utilities/loadhtmlclasssections/${id}/`;
+            // 
+            const post_data = await fetch(url);
+            const result = await post_data.json();
+            document.getElementById('to_id_sections').innerHTML = result.message;
+     }, false)
+
+
+async function loadStudents() {
+    const clx = document.getElementById("id_classes");
+
+    if (clx.value !== '' && event.target.value !== '') {
+        const classes_id = clx.value;
+        const section_id = event.target.value;
+        const location = document.location.origin;
+        const url = `${location}/api/{{setting.api_version}}/utilities/loadhtmlstudents/${classes_id}/${section_id}/`;
+        // 
+        const post_data = await fetch(url);
+        const result = await post_data.json();
+     
+        document.getElementById('promotion_old').innerHTML = result.message;
+    }
+}
+
+</script>
+{% endblock content %}

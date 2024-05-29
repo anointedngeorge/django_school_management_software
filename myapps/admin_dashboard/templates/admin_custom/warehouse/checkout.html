@@ -1,0 +1,126 @@
+{% extends "admin_custom/base.html" %}
+{% load static %}
+{% static "seller/images" as images %}
+{% load humanize %}
+{% load djmoney %}
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3>
+                <i class="fa fa-checkout"></i>
+                Checkout Page
+            </h3>
+            <div class="col-lg-12">
+                <form action="{% url 'admin_dashboard:checkout' %}" method="POST">
+                    <caption>
+                        <h3>
+                            <b>Profile</b>
+                        </h3>
+                    </caption>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="col-lg-12">
+                                {% if cart_logs %}
+                                {{salesform}}
+                                {% else %}
+                                <p>{{"no cart avaliable"|upper}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <table class="table table-sm">
+                                <tr>
+                                    <td>#</td>
+                                    <td>
+                                        <b>Item</b>
+                                    </td>
+                                    <td>
+                                        <b>Quantity</b>
+                                    </td>
+                                    <td>
+                                        <b>Amount</b>
+                                    </td>
+                                    <td>
+                                        <b>Total</b>
+                                    </td>
+                                    <td>
+                                        <b>...</b>
+                                    </td>
+                                </tr>
+                                {% for cart in cart_logs  %}
+                                <tr>
+                                    <td>
+                                        <b>{{forloop.counter}}</b>
+                                    </td>
+                                    <td>
+                                        <small>{{cart.product}}</small>
+                                        <input
+                                            type="text"
+                                            value="{{cart.id}}"
+                                            name="cart[]"
+                                            hidden
+                                        >
+                                    </td>
+                                    <td>
+                                        <small>{{cart.quantity}}</small>
+                                    </td>
+                                    <td>
+                                        <small>
+                                            {{cart.quantity}}
+                                            <span class="text-danger">*</span>
+                                            {{cart.selling_price|intcomma}}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <small>
+                                            {{cart.total_price|intcomma}}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'admin_dashboard:cartitem' cart.id %}">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <i class="icon-credit-card"></i>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            {% if total_amount.total_cost %}
+                                            <b>{% money_localize total_amount.total_cost 'NGN' %}</b>
+                                            <input
+                                                type="number"
+                                                hidden
+                                                name="total_price"
+                                                value="{{total_amount.total_cost}}"
+                                            >
+                                            {% else %}
+                                            <b>0.00</b>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mt-2">
+                        {% if cart_logs %}
+                        <button type="submit" class="btn btn-dark btn-block">
+                            <i class="icon-action-redo"></i>
+                            Complete
+                        </button>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

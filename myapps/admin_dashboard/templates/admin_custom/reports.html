@@ -1,0 +1,61 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{"Daily Reports Screen"|upper}}</h3>
+            <hr>
+            <!-- start of table -->
+            <div class="table-responsive">
+                {% for tracker in saledatetrackers  %}
+                <h3>
+                    <b>
+                        <span class="text text-primary">{{tracker.date}}</span>
+                        Report
+                    </b>
+                </h3>
+                <hr>
+                {% show_filtered_data object='sales.models.Sale' order_by='timestamp' sale_date_tracker=tracker.date as filterObject %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <b>#</b>
+                            </th>
+                            <th>
+                                <b>Product</b>
+                            </th>
+                            <th>
+                                <b>...</b>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in filterObject  %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{obj.get_sales_detail}}</td>
+                            <td>
+                                <a href="{% url 'admin_dashboard:report_printout' id=obj.id  pagename='report_printout' action='print' %}">
+                                    <i class="icon-printer"></i>
+                                </a>
+                                |
+                                <a href="{% url 'admin_dashboard:report_printout' id=obj.id  pagename='report_printout' action='view' %}">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <hr class="text-danger">
+                {% endfor %}
+            </div>
+            <!-- end of table -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

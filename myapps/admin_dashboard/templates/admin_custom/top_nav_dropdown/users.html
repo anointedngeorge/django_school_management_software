@@ -1,0 +1,36 @@
+<li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+    <a
+        class="nav-link dropdown-toggle"
+        id="UserDropdown"
+        href="#"
+        data-toggle="dropdown"
+        aria-expanded="false"
+    >
+        {% comment %} <img class="img-xs rounded-circle ml-2" src="{{images}}/faces/face8.jpg" alt="Profile image"> {% endcomment %}
+        <i class="bi-person-circle mr-2" style="font-size: 2rem;"></i>
+
+        <span class="font-weight-normal"> {{request.user}}</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+        <div class="dropdown-header text-center">
+            {% comment %} <img class="img-md rounded-circle" src="{{images}}/faces/face8.jpg" alt="Profile image"> {% endcomment %}
+            <i class="bi-person-circle" style="font-size: 7.5rem; line-height:0"></i>
+
+            <p class="mb-1 mt-3">Administrator</p>
+            <p class="font-weight-light text-muted mb-0">{{request.user.email}}</p>
+        </div>
+        <a class="dropdown-item" href="{% url 'admin_dashboard:profile' %}">
+            <i class="dropdown-item-icon icon-user text-primary"></i>
+            My Profile
+            <span class="badge badge-pill badge-danger">1</span>
+        </a>
+        <a class="dropdown-item" href="{% url 'admin_dashboard:message' %}">
+            <i class="dropdown-item-icon icon-speech text-primary"></i>
+            Messages
+        </a>
+        <a class="dropdown-item" href="{% url 'admin_dashboard:logout' %}">
+            <i class="dropdown-item-icon icon-power text-primary"></i>
+            Sign Out
+        </a>
+    </div>
+</li>

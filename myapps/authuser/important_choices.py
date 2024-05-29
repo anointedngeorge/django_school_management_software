@@ -1,0 +1,66 @@
+USER_EXCLUDE_LIST = ['is_token_verified','is_staff','is_active','is_online',
+     'isPassRequest','created','rsa_duration',
+     'encrypt_date','encoded','message','key','token','token_pin_id',
+     'is_activeCustomUserverified','user_permissions','is_superuser','last_login','groups']
+
+
+
+RELIGION_CHOICES = [
+    ('Buddhism', 'Buddhism'),
+    ('Christianity', 'Christianity'),
+    ('Hinduism', 'Hinduism'),
+    ('Islam', 'Islam'),
+    ('Judaism', 'Judaism'),
+    ('Sikhism', 'Sikhism'),
+    ('Other', 'Other'),
+]
+
+LICENSE_CHOICES = [
+    ('Driver', 'Driver License'),
+    ('National ID', 'National Identification Card'),
+    ('Voter', 'Voter Card'),
+    ('International Passport', 'International Passport'),
+    ('Business', 'Business License'),
+    ('Marriage', 'Marriage Certificate'),
+    ('Other', 'Other License/ID'),
+]
+
+STATE_CHOICES = [
+    ('Abia', 'Abia'),
+    ('Adamawa', 'Adamawa'),
+    ('Akwa Ibom', 'Akwa Ibom'),
+    ('Anambra', 'Anambra'),
+    ('Bauchi', 'Bauchi'),
+    ('Bayelsa', 'Bayelsa'),
+    ('Benue', 'Benue'),
+    ('Borno', 'Borno'),
+    ('Cross River', 'Cross River'),
+    ('Delta', 'Delta'),
+    ('Ebonyi', 'Ebonyi'),
+    ('Edo', 'Edo'),
+    ('Ekiti', 'Ekiti'),
+    ('Enugu', 'Enugu'),
+    ('Gombe', 'Gombe'),
+    ('Imo', 'Imo'),
+    ('Jigawa', 'Jigawa'),
+    ('Kaduna', 'Kaduna'),
+    ('Kano', 'Kano'),
+    ('Katsina', 'Katsina'),
+    ('Kebbi', 'Kebbi'),
+    ('Kogi', 'Kogi'),
+    ('Kwara', 'Kwara'),
+    ('Lagos', 'Lagos'),
+    ('Nasarawa', 'Nasarawa'),
+    ('Niger', 'Niger'),
+    ('Ogun', 'Ogun'),
+    ('Ondo', 'Ondo'),
+    ('Osun', 'Osun'),
+    ('Oyo', 'Oyo'),
+    ('Plateau', 'Plateau'),
+    ('Rivers', 'Rivers'),
+    ('Sokoto', 'Sokoto'),
+    ('Taraba', 'Taraba'),
+    ('Yobe', 'Yobe'),
+    ('Zamfara', 'Zamfara'),
+    ('Federal Capital Territory', 'FCT'),
+]

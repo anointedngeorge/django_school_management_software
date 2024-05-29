@@ -1,0 +1,27 @@
+{% load navigation %}
+{% if nav.is_allowed %}
+    {% splituri url=request.META.PATH_INFO as match_url %}
+<li>
+    <a>
+        <i class="{{nav.icon}}"></i>
+        <span>{{nav.title}}</span>
+        <span class="fa fa-chevron-down"></span>
+    </a>
+    <ul class="nav child_menu">
+        {% if nav.children|length > 0 %}
+        {% for x  in nav.children %}
+        <li>
+            <a href="{{x.url}}" id="{% if request.META.PATH_INFO == x.url %}anchor_child_indicator{% endif %}">
+                <i class="bi bi-circle"></i>
+                <span>{{x.title}}</span>
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li>
+            <i>No link provided</i>
+        </li>
+        {% endif %}
+    </ul>
+</li>
+{% endif %}

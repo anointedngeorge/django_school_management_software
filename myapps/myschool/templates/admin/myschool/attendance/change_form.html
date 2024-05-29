@@ -1,0 +1,86 @@
+{% extends "admin/change_form.html" %}
+
+{% load myschool_template_tags %}
+
+{% block content %}
+{{ block.super }}
+<!-- only show when form is present -->
+
+<script>
+    (function() {
+        document.querySelectorAll(".submit-row")[0].style.display = "none";
+    })
+    function _id(el) {
+        return document.querySelector(el);
+    }
+
+    // do not delete this part
+    
+
+    function onLoadForm() {
+       const teacher = _id('#id_teacher');
+       const  sections = _id('#id_sections');
+       const  classes = _id('#id_classes');
+       const term = _id('#id_term');
+       const subject = _id('#id_subject');
+       const session = _id('#id_session');
+
+       const app = '{{adminsite}}'
+
+       if ( 
+             (teacher.value != '') && (sections.value != '') && (classes.value != '') 
+             && (term.value != '') && (subject.value != '') && (session.value != '')
+        ) {
+            // http://127.0.0.1:8010/console/myschool/results/view/result_load_student/?teacher_id=10&classes_id=a9f2f66f-4288-4749-981e-4cc308e3f7ad&term_id=45a4f438-16b2-4ad4-a6a2-cb2aa6e69fb7&subject_id=05392211-374b-4f70-829b-71179e6aee8c
+            query = `?teacher_id=${teacher.value}&sections_id=${sections.value}&classes_id=${classes.value}&term_id=${term.value}&subject_id=${subject.value}&session=${session.value}`
+            const url = `/${app}/myschool/results/view/result_load_student/${query}`;
+            async function loader() {
+                document.location.href = url;
+            }
+            loader()
+       } else {
+            alert("fields can not be empty!")
+       }
+   }
+
+
+function onLoadEditForm() {
+       const teacher = _id('#id_teacher');
+       const  sections = _id('#id_sections');
+       const  classes = _id('#id_classes');
+       const term = _id('#id_term');
+       const subject = _id('#id_subject');
+       const session = _id('#id_session');
+
+       const app = '{{adminsite}}'
+
+       if ( 
+             (teacher.value != '') && (sections.value != '') && (classes.value != '') 
+             && (term.value != '') && (subject.value != '') && (session.value != '')
+        ) {
+            // http://127.0.0.1:8010/console/myschool/results/view/result_load_student/?teacher_id=10&classes_id=a9f2f66f-4288-4749-981e-4cc308e3f7ad&term_id=45a4f438-16b2-4ad4-a6a2-cb2aa6e69fb7&subject_id=05392211-374b-4f70-829b-71179e6aee8c
+            query = `?teacher_id=${teacher.value}&sections_id=${sections.value}&classes_id=${classes.value}&term_id=${term.value}&subject_id=${subject.value}&session=${session.value}`
+            const url = `/${app}/myschool/results/view/result_edit_student/${query}`;
+            async function loader() {
+                document.location.href = url;
+            }
+            loader()
+       } else {
+            alert("fields can not be empty!")
+       }
+   }
+
+
+   async function loadClassSection(val) {
+        const sections = document.querySelector("#id_sections");
+        const url =  `{% network 'getsections' %}/?class_id=${val.target.value}`;
+        await fetch(url)
+        .then(response=>response.text())
+        .then(data => {
+            sections.innerHTML = data;
+        } );
+    }
+
+    document.querySelector("#id_classes").addEventListener('change', loadClassSection )
+</script>
+{% endblock content %}

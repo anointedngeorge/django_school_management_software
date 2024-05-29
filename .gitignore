@@ -1,0 +1,14 @@
+/tenant_env
+tenant_env
+media
+
+tenant/tenant/settings/dev_settings.py
+
+cores/core/settings/dev_settings.py
+
+.env
+__pycache__
+**/__pycache__
+**/**/__pycache__
+documentation
+.vscode

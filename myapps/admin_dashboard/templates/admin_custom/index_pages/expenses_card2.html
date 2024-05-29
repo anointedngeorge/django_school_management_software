@@ -1,0 +1,82 @@
+{% load admin_custom_template_tags %}
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="align-items-baseline report-summary-header">
+                            <h5 class="font-weight-semibold">Ecommerce</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row report-inner-cards-wrapper">
+                    <div class=" col-md -6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Products</span>
+                            <h4>
+                                {% show_count object='products.models.Product' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'products' 'Product' %}" class="link">View List</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform' 'products' 'Product' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-success">
+                            <i class="bi-truck" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Businesses</span>
+                            <h4>
+                                {% show_count object='authuser.models.VendorBusiness' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'authuser' 'VendorBusiness' %}" class="link">View list</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform' 'authuser' 'VendorBusiness' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-danger">
+                            <i class="bi-truck" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Categories</span>
+                            <h4>
+                                {% show_count object='categories.models.Category' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'categories' 'Category' %}" class="link">View list</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform' 'categories' 'Category' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-danger">
+                            <i class="bi-truck" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Sub Categories</span>
+                            <h4>
+                                {% show_count object='categories.models.SubCategories' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'categories' 'SubCategories' %}" class="link">View list</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform' 'categories' 'SubCategories' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-primary">
+                            <i class="bi-truck" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

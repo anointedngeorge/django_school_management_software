@@ -1,0 +1,12 @@
+{% if nav.is_allowed %}
+<li>
+    <a class="nav-link collapsed" href="{{nav.url}}">
+        <i class="{% if nav.icon %}
+            {{nav.icon}}
+        {% else %}
+        fa fa-users
+        {% endif %} "></i>
+        <span>{{nav.title}}</span>
+    </a>
+</li>
+{% endif %}

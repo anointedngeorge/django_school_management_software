@@ -1,0 +1,29 @@
+<li>
+
+    {% if menu.has_modal %}
+    <a
+        href="#!"
+        class="dropdown-item"
+        data-bs-toggle="modal"
+        data-bs-target="#modal"
+        data-url="{% if query %}
+        {{menu.url}}?{{query}}
+        {% else %}
+        {{menu.url}}
+        {% endif %}"
+        data-modal_title="{{menu.title}}"
+    >
+        <i class="{{menu.classicon}}"></i>
+        {{menu.title}}
+    </a>
+    {% else %}
+    <a class="dropdown-item" href="{% if query %}
+    {{menu.url}}?{{query}}
+    {% else %}
+    {{menu.url}}
+    {% endif %}">
+        <i class="{{menu.classicon}}"></i>
+        {{menu.title}}
+    </a>
+    {% endif %}
+</li>

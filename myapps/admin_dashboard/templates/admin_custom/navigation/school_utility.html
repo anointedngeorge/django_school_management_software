@@ -1,0 +1,31 @@
+<li class="nav-item" data-id="authuser">
+    <a
+        class="nav-link collapsed"
+        data-toggle="collapse"
+        href="#school_utility"
+        aria-expanded="false"
+        aria-controls="Utilitiesdrop"
+    >
+        <span class="menu-title">Utilities</span>
+        <i class="icon-layers menu-icon"></i>
+    </a>
+    <div class="collapse" id="school_utility">
+        <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+                <a class="nav-link" data-id="authuserClient" href="{% url 'admin_dashboard:changelist' 'myschool' 'Classes' %}">Classes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-id="authuserAgent" href="{% url 'admin_dashboard:changelist' 'myschool' 'Sections' %}">Sections</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-id="authuserSubject" href="{% url 'admin_dashboard:changelist' 'myschool' 'Subjects' %}">Subjects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-id="authuserDriver" href="{% url 'admin_dashboard:changelist' 'myschool' 'Term' %}">Sessions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-id="authuserDriver" href="{% url 'admin_dashboard:changelist' 'myschool' 'SubjectSelection' %}">Subject Selection</a>
+            </li>
+        </ul>
+    </div>
+</li>

@@ -1,0 +1,263 @@
+{% load myschool_template_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            div.container001 {
+                margin: 10px auto;
+                /* width: 70%; */
+                /* padding: 10px; */
+                /* border: 2px solid red; */
+            }
+
+            div.container001 > table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            div.container001 > table thead th {
+                color: #000;
+            }
+        
+            div.container001  .col-lg-6 {
+                width: 49%;
+                display: inline-block;
+                /* background-color: red; */
+                vertical-align: top;
+            }
+            div.container001  .col-lg-6 > table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            div.row {
+                margin: 0 10px 10px 0;
+            }
+
+            /* table.result-table tr td {
+                columns: collapse;
+            } */
+        </style>
+    </head>
+    <body>
+        <div class="container001 border border-2 mt-4 mb-4">
+            <table class="table ">
+                <!--  -->
+                <tr class="bg-da p-4">
+                    <td
+                        colspan="2"
+                        align="right"
+                        valign="middle"
+                        style="max-width:50px;"
+                    >
+                        <img src="https://png.pngtree.com/png-vector/20211011/ourmid/pngtree-school-logo-png-image_3977360.png" style="height:120px; width: 100%;">
+                    </td>
+                    <td
+                        colspan="8"
+                        align="center"
+                        valign="middle"
+                        style="width:290px;"
+                    >
+                        <h3>
+                            <!-- St. Augustin Secondary School 24, ABC street, DEF Road, Enugu State -->
+                            {{result.school_title}}
+                        </h3>
+                        <p>
+                            <!-- 24, ABC street, DEF Road, Enugu State -->
+                            {{result.school_address}}
+                        </p>
+                        <p>Phone: {{result.school_phone}} Email: {{result.school_email}}</p>
+                        <div class="col-lg-12 bg-secondar">
+                            <b class="text text-justify">
+                                <center>
+                                    Academic Year {{result.session}}
+                                </center>
+                            </b>
+                        </div>
+                    </td>
+                    <td
+                        colspan="2"
+                        align="right"
+                        valign="middle"
+                        style="max-width:50px;"
+                    >
+                        <img src="http://{{request.META.HTTP_HOST}}{{result.photo}}" style="height:120px; width: 100%;">
+                    </td>
+                </tr>
+            </table>
+            <!--  -->
+            <br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <font face="Calibri" color="#000000">
+                        <p>
+                            <span style="color:red;">Fullname:</span>
+                            <span>
+                                <b>{{result.fullname}}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Enroll No:</span>
+                            <span>
+                                <b>{{result.student_code}}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Class:</span>
+                            <span>
+                                <b>{{result.classes}}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Section:</span>
+                            <span>
+                                <b>{{result.sections}}</b>
+                            </span>
+                        </p>
+                    </font>
+                </div>
+                <div class="col-lg-6">
+                    <font face="Calibri" align="right" color="#000000">
+                        <p>
+                            <span style="color:red;">Session:</span>
+                            <span>
+                                <b>{{result.session}}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Position:</span>
+                            <!-- printout positions -->
+                            <span>
+                                <b>{% grading data=bulk_positions code=result.student_code divisor=result.subject_total %}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Class No:</span>
+                            <span>
+                                <b>{{result.class_no}}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Total:</span>
+                            <span>
+                                <b>{{result.total}}</b>
+                            </span>
+                        </p>
+                        <p>
+                            <span style="color:red;">Average:</span>
+                            <span>
+                                <b>{% average data=bulk_averages code=result.student_code divisor=result.subject_total %}</b>
+                            </span>
+                        </p>
+                    </font>
+                </div>
+            </div>
+            <br>
+            <!-- result table  -->
+            <table border="1" class="result-table">
+                <thead>
+                    <tr>
+                        {% table_heading columns=result_headings %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% table_rows result.data columns=result_headings %}
+                </tbody>
+            </table>
+            <!-- result table -->
+            <!-- grading section -->
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <table border="1">
+                        <tr>
+                            <td colspan="100">
+                                <center>
+                                    Terminal Exam Grading System
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>46 - 50</td>
+                            <td>41 - 45</td>
+                            <td>40	31</td>
+                            <td>26 - 30</td>
+                            <td>18 - 25</td>
+                            <td>0 - 17</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>A+</td>
+                            <td>A</td>
+                            <td>B+</td>
+                            <td>B</td>
+                            <td>C</td>
+                            <td>Fail</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-6">
+                    <table border="1">
+                        <tr>
+                            <td colspan="100">
+                                <center>
+                                    Final Exam Grading System
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>46 - 50</td>
+                            <td>41 - 45</td>
+                            <td>40	31</td>
+                            <td>26 - 30</td>
+                            <td>18 - 25</td>
+                            <td>0 - 17</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>A+</td>
+                            <td>A</td>
+                            <td>B+</td>
+                            <td>B</td>
+                            <td>C</td>
+                            <td>Fail</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <span>Signature</span>
+                        <font face="Calibri" size="3" color="#FF0000">
+                            <p>Principal signature</p>
+                        </font>
+                    </td>
+                    <td>
+                        <span>Signature</span>
+                        <font face="Calibri" size="3" color="#FF0000">
+                            <p>Principal signature</p>
+                        </font>
+                    </td>
+                    <td>
+                        <span>Signature</span>
+                        <font face="Calibri" size="3" color="#FF0000">
+                            <p>Principal signature</p>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            {% if is_graph_shown %}
+            <!-- graph -->
+            <div class="row">
+                {% pandas_graph data=result.data columns=graph_fields chart_type='bar' %}
+            </div>
+            {% endif %}
+            <br>
+        </div>
+    </body>
+    <p style="page-break-after: always">
+    </html>

@@ -1,0 +1,23 @@
+<div class="col-lg-12">
+    {% if dataform %}
+    <h3 class="card-title">Create {{verbose_name|title}}</h3>
+    <form action="{% url 'admin_dashboard:changeform' appname modelname %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            {% for form in dataform  %}
+              {% include "admin_custom/includes/fieldsets.html" %}
+            {% endfor %}
+        </div>
+        <div class="col-lg-12 mt-4">
+            <button type="submit" class="btn btn-dark">
+                Submit {{ verbose_name }}
+            </button>
+        </div>
+    </form>
+    {% else %}
+    <div class="text-center my-3">
+        <img src="{{images}}/empty-icon.png">
+        <div class="mt-3">No form found!</div>
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,50 @@
+{% load admin_form_tools %}
+{% load admin_custom_template_tags %}
+<div class="col-lg-12">
+    <div class="form-group">
+        <label class="text text-success">
+            {{ form.label }} {% if form.field.required %}
+            <span class="text text-danger">
+                <sup title="{{form.label}} is required">*</sup>
+            </span>
+            {% endif %}
+        </label>
+        {% if form|is_foreign_key_or_m2m %}
+    {{form}}
+        <p>
+            {{form.errors}}
+        {% foreign_key_or_m2m form as urllink %}
+            <a
+                class="links"
+                data-toggle="modal"
+                data-target="#modalBtn"
+                data-modal_title="{{urllink.appname}} - {{verbose_name}}"
+                href="{% url 'admin_dashboard:modalchangeform' urllink.appname urllink.modelname %}"
+                data-url="{% url 'admin_dashboard:modalchangeform' urllink.appname urllink.modelname %}"
+                onclick="loadpages();"
+                title="add {{form.name}}"
+            >
+                Add
+        {% show_count object=urllink.appname|add:".models."|add:urllink.modelname as counter %}
+                <sup>
+                    <small>({{counter}})</small>
+                </sup>
+            </a>
+        </p>
+        {% else %}
+    {{form}}
+    {% endif %}
+
+    {% if field.errors %}
+        <div class="col-lg-12 text-danger text">{{ field.errors }}</div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    async function related_model_links() {
+        event.preventDefault();
+       const link =  event.target.href;
+       const pst = await window.open(link);
+       
+    }
+</script>

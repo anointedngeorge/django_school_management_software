@@ -1,0 +1,247 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load myschool_template_tags %}
+{% static 'assets/vendors' as vendor %}
+{% block extrahead %}
+<!-- pyscript include -->
+<style>
+        label[for='id_no_student_found'] {
+            border:none;
+            width: 1000px;
+            color:#000;
+        }
+        table#result_table_form tr td {
+            display: inline-block;
+            /* border: 3px solid red; */
+            width: 10% !important;
+        }
+
+        table#result_table_form tr td input {
+            justify-content: center;
+            width: 100%;
+        }
+        /* table#result_table_form tr td input.fields {
+            width: 30% !important;
+            border: 2px solid red;
+        } */
+
+        /* table#result_table_form tr td input.nonefields {
+            width: 30% !important;
+            border: 2px solid red;
+        } */
+</style>
+{% endblock extrahead %}
+{% block content %}
+<br>
+<ul class="nav">
+    <li>
+        <a href="/{{adminsite}}/myschool/results/add/" class="btn btn-sm btn-primary">
+            <i class="fa fa-arrow-left"></i>
+            Add Result
+        </a>
+    </li>
+    <li>
+        <a href="/{{adminsite}}/myschool/results/" class="btn btn-sm btn-primary">
+            <i class="fa fa-arrow-left"></i>
+            View Result
+        </a>
+    </li>
+</ul>
+<br>
+{% if selected_results %}
+<center>
+    <div class="mb-4">
+        <h6>{{page_title}}</h6>
+    </div>
+</center>
+<div class="container mt-3">
+    <p>New Result Sheet</p>
+</div>
+{% endif %}
+<div class="container p-2 border border-1">
+    <!-- form -->
+    <form id="add_new_results" method="POST" action="/{{adminsite}}/myschool/results/view/loadResultform/?{{query_url}}">
+        {% csrf_token %}
+        <div class="table-responsive">
+            <table id="result_table_form">
+                {{student_form|bootstrap_edit_table}}
+            </table>
+        </div>
+        <br>
+        <button id="update_initial_result_btn" class="btn btn-sm btn-primary" data-url="/{{adminsite}}/myschool/results/view/updateResultform/?{{query_url}}">Update {{subject_title}} Resultsheet</button>
+    </form>
+    <!-- form -->
+</div>
+<script src="{{vendor}}/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+        var result_container = []
+        var dataset_json = {}
+
+    function messages({title='Oops...', text='Something went wrong!', icon='error'}) {
+        Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        footer: ''
+        });
+    }
+
+    function _id(e) {
+        return document.getElementById(e);
+    }
+    function _grade(total) {
+        const parsedTotal = parseInt(total);
+        if (parsedTotal >= 70 && parsedTotal <= 100) {
+            return { grade: 'A', remarks: 'excellent' };
+        } else if (parsedTotal >= 60 && parsedTotal <= 70) {
+            return { grade: 'B', remarks: 'v.good' };
+        } else if (parsedTotal >= 50 && parsedTotal <= 60) {
+            return { grade: 'C', remarks: 'good' };
+        } else if (parsedTotal >= 40 && parsedTotal <= 29) {
+            return { grade: 'D', remarks: 'fair' };
+        } else if (parsedTotal >= 0 && parsedTotal <= 30) {
+            return { grade: 'F', remarks: 'poor' };
+        } else {
+            return { grade: 'P', remarks: 'poorest' };
+        }
+    }
+    function _remarks(name) {
+        return name;
+    }
+
+    function _looper(inputs) {
+        let sum = 0;
+        inputs.forEach(input => {
+            const value = parseInt(input.value) || 0;
+            sum += value;
+        });
+        return sum;
+    }
+    $(document).ready(function() {
+        const inputFields = document.querySelectorAll('tr td input.fields');
+        // Iterate through each input field
+        inputFields.forEach(inputField => {
+            // Add change event listener to each input field
+            inputField.addEventListener('keyup', event => {
+                // Find the closest <tr> (table row) element
+                const closestRow = event.target.closest('tr');
+                // Get the index of the row (optional, can be useful for identifying the row)
+                const rowIndex = Array.from(closestRow.parentNode.children).indexOf(closestRow);
+            
+                if (!isNaN(event.target.value) && (!event.target.value == "")) {
+                    const inputs = closestRow.querySelectorAll('input.fields');
+                    let dt = parseInt(event.target.value)
+                    let grade = _id(`id_grade_${rowIndex}`);
+                    let gradeTotal = _id(`id_total_${rowIndex}`);
+                    let gradeRemarks = _id(`id_remarks_${rowIndex}`);
+                    let total =  parseInt(_looper(inputs));
+   
+                    if (total <= 100) {
+                        gradeTotal.value = total;
+                        let g = _grade(total);
+                        grade.value = g.grade;
+                        gradeRemarks.value =  g.remarks;
+                    }else {
+                        gradeTotal.value = 0;
+                        event.target.value = 0;
+                    }
+                    
+                }else {
+                    event.target.value = 0;
+                    let mm = `${event.target.value} is not a number`;
+                    // messages({text:mm})
+                   
+                }
+             
+            });
+        });
+
+
+        // add result
+        
+        const result_add_btn =  document.querySelectorAll(".result_add_btn");
+        result_add_btn.forEach(btn => {
+                document.querySelector("#"+btn.id).addEventListener("click", function (event) {
+                    // make index a valid integer
+                    const btn_index =  event.target.dataset.index;
+                    const btn_counter =  event.target.dataset.counter;
+                    // choose the closet tr
+                    const closestRow = event.target.closest('tr');
+                    // get all the children of the tr that is an input tag
+                    const inputs = closestRow.querySelectorAll('input');
+                    // prepare the datasheet to serialize the object from the input data
+                    let datasheet = {}
+                    inputs.forEach(data => {
+                        // example : data comes in this format (exams_0)
+                        // split using _0
+                       let dname =  `${data.name}`.split(`_${btn_counter}`)[0];
+                       // if any of these fields is empty , replace with  a 0, to avoid
+                       // a missing field name.   
+                       if (data.value == ""){
+                            data.value = 0;
+                       }
+                            
+                        datasheet[dname] = data.value;
+                    })
+                    // define a variable named prepare_data_for_export, this will hold the datasheet
+                    const prepare_data_for_export = datasheet;
+                    // dataset_json is a variable with a value of json, defined globally, to store the result, and also
+                    // filters out duplicate data. This is easy and efficient.
+                    dataset_json[`${btn_index}`] = prepare_data_for_export;
+                    messages({text:`index ${btn_index} added.`, title:'Great!', icon:"success"})
+                })
+            })
+        })
+
+        document.querySelector("#update_initial_result_btn").addEventListener("click", async function(event) {
+            event.preventDefault();
+            // prompt a confirmation to continue.
+            let keys = Object.keys(dataset_json);
+            // if confirmed, proceed.
+            if (keys.length > 0) {
+                let prompt_confirmation = window.confirm("Are you sure? This action is irreversible.");
+                    if (prompt_confirmation) {
+                        // get the object keys in array format to determine the length.
+                            let url =  event.target.dataset.url;
+                            let csrftoken =  document.getElementsByName("csrfmiddlewaretoken")[0].value;
+                            // console.log(csrftoken);
+                            // prepare for upload
+                            const prepare_data_for_export = JSON.stringify(dataset_json)
+                            // define the head
+                            let headers = {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken};
+                            // define options
+                            let options = { method: 'POST', headers: headers, body: prepare_data_for_export };
+                        
+                        try {
+                            await fetch(url, options)
+                                .then(response => {
+                                    if (response.ok) {
+                                        return response.json();
+                                    }
+                                    throw new Error('Network response was not ok.');
+                                })
+                                .then(data => {
+                                    mesg = data['message']
+                                    messages({ title:"Result Status",text:`${mesg}`, icon:'success'});
+                                })
+                                .catch(error => {
+                                    // console.error('Error uploading data:', error);
+                                    messages({text:`${error}`});
+                                });
+                            
+                        } catch (err) {
+                            messages({text:`Error occurred: ${err}`});
+                        }   
+                    
+                        } else {
+                            messages({text:"Result upload was concelled.", title:"Result Cancellation."})
+                    }
+                }else {
+                        let = mm = "Can not upload an empty result sheet! Register one or two results to continue!";
+                        messages({text:mm})
+                }
+        });
+</script>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+<div class="col-lg-12">
+    {% include "admin/print_options.html" %}
+    <br>
+    <br>
+</div>
+{{ block.super }}
+{% endblock content %}

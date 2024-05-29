@@ -1,0 +1,34 @@
+{% load admin_custom_template_tags %}
+{% load admin_navigation %}
+
+
+
+{% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <a href="{% url 'admin_dashboard:dashboard' %}" class="nav-link">
+                <div class="profile-image">
+                    <!-- <img class="img-xs rounded-circle" src="{{images}}/faces/face8.jpg" alt="profile image"> -->
+                    <i class="bi-person-circle" style="font-size: 2.5rem;"></i>
+                </div>
+                <div class="text-wrapper">
+                    <p class="profile-name" style="word-wrap: break-word;">
+                        {{request.user.username}}
+                    </p>
+                    <p class="designation">Administrator</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item nav-category">
+            <span class="nav-link">Dashboard</span>
+        </li>
+        <li class="nav-item" data-id="/administrator/dashboard/">
+            <a class="nav-link" href="{% url 'admin_dashboard:dashboard' %}">
+                <span class="menu-title">Dashboard</span>
+                <i class="icon-screen-desktop menu-icon"></i>
+            </a>
+        </li>
+        {% navigations %}
+    </ul>
+</nav>

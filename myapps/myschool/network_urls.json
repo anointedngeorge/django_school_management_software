@@ -1,0 +1,8 @@
+{
+    "print_result":"/console/myschool/results/view/printresult",
+    "view":"/console/myschool/results/view/printresult",
+    "getsections":"/console/myschool/results/view/getRelatedClassSections",
+    "attendance":"/console/myschool/attendance/view/take_attendance/",
+    "selected_student_attendance":"/console/myschool/attendance/view/selected_student_attendance/",
+    "register_attendance":"/console/myschool/attendance/view/register_attendance/"
+}

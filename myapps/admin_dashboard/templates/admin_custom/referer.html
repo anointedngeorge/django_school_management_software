@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between mb-4 mx-2">
+    <div>
+        <a href="{% url 'admin_dashboard:dashboard' %}" class="text text-dark font-weight-bold mr-3">
+            Dashboard
+        </a>
+        <a href="{% url 'admin_dashboard:changelist' appname modelname %}" class="text text-success font-weight-bold">
+            View list
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'admin_dashboard:changeform' appname modelname %}" class="text text-white btn btn-sm btn-dark">
+            Add New
+            <i class="fa fa-plus fa-sm"></i>
+        </a>
+    </div>
+</div>

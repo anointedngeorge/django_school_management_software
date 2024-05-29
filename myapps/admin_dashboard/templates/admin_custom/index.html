@@ -1,0 +1,10 @@
+{% load admin_custom_template_tags %}
+
+
+{% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
+
+{% set_path 'admin_custom/dashboard' pagename=setting.dashboard_index  default_pagename='default' as pagepath %}
+
+
+
+{% include pagepath with pagename=setting.dashboard_index %}

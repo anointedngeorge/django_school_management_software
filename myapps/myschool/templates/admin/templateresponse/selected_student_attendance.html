@@ -1,0 +1,188 @@
+{% extends "admin/base_site.html" %}
+
+{% load myschool_template_tags %}
+
+{% block content %}
+
+{% if has_code %}
+<div class="container">
+    <div class="col-lg-12">
+        {% csrf_token %}
+        <center>
+            <p>
+                <font
+                    face="Calibri"
+                    align="right"
+                    size="2"
+                    color="#000000"
+                >
+                    Attendance for {{attendance}}
+                </font>
+            </p>
+            <p>
+                <font
+                    face="Calibri"
+                    align="right"
+                    size="5"
+                    color="#000000"
+                >
+                    {{calendar.month_name}} ({{calendar.day_name}})
+                </font>
+            </p>
+        </center>
+    </div>
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Student Code</th>
+                    <th>Student</th>
+                    <th>Morning</th>
+                    <th>Afternoon</th>
+                    <th></th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>
+                        {{student.code}}
+                        <input
+                            type="hidden"
+                            id="student_code_{{forloop.counter}}"
+                            name="student_code"
+                            value="{{student.code}}"
+                        >
+                    </td>
+                    <td>
+                        {{student.first_name}} {{student.last_name}}
+                        <input
+                            type="hidden"
+                            name="student"
+                            id="student_{{forloop.counter}}"
+                            value="{{student.id}}"
+                        >
+                    </td>
+                    <td>
+                        <select
+                            class="form-control form-control-sm"
+                            name="morning"
+                            data-shortname="morning"
+                            id="morning_{{forloop.counter}}"
+                        >
+                            <option value="present">Present</option>
+                            <option value="absent" selected>Absent</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select
+                            class="form-control form-control-sm"
+                            name="afternoon"
+                            data-shortname="afternoon"
+                            id="afternoon_{{forloop.counter}}"
+                        >
+                            <option value="present">Present</option>
+                            <option value="absent" selected>Absent</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button
+                            type="button"
+                            data-index="{{forloop.counter}}"
+                            data-attendance="{{attendance.id}}"
+                            data-attendance_code="{{attendance.code}}"
+                            data-attendance_date="{{calendar.date}}"
+                            data-month="{{calendar.month_name}}"
+                            data-day="{{calendar.day_name}}"
+                            class="btn btn-sm btn-dark take_fields"
+                            id="take_{{forloop.counter}}"
+                        >Take</button>
+                        <!-- <button
+                            type="button"
+                            data-index="{{forloop.counter}}"
+                            class="btn btn-sm btn-warning remove_fields"
+                            id="remove_{{forloop.counter}}"
+                        >Remove</button> -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<script>
+    window.location.href = "/console/";
+</script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+        var result_container = []
+        var dataset_json = {}
+
+    function messages({title='Oops...', text='Something went wrong!', icon='error'}) {
+        Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        footer: ''
+        });
+    }
+
+    function _id(el) {
+        return document.querySelector(el);
+    }
+
+    // do not delete this part
+    
+   function take_attendance(el) {
+        let index =  el.target.dataset.index;
+        let attendance_id =  el.target.dataset.attendance;
+        let attendance_code =  el.target.dataset.attendance_code;
+        let attendance_date =  el.target.dataset.attendance_date;
+        let month_name =  el.target.dataset.month;
+        let day_name =  el.target.dataset.day;
+
+        let closet = el.target.closest('tr');
+        let student_code = closet.querySelector('#student_code_'+index).value;
+        let student_id = closet.querySelector('#student_'+index).value;
+        let morning = closet.querySelector('#morning_'+index).value;
+        let afternoon = closet.querySelector('#afternoon_'+index).value;
+        let prepare_data_for_export = JSON.stringify({attendance_code,student_id,morning,afternoon, attendance_id, month_name, day_name, attendance_date})
+        
+        async function fetch_data(params) {
+            let csrftoken =  document.getElementsByName("csrfmiddlewaretoken")[0].value;
+            let headers = {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken};
+            let options = { method: 'POST', headers: headers, body: prepare_data_for_export };
+            let url = "{% network 'register_attendance' %}"
+            try {
+                await fetch(url, options)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        mesg = data['message']
+                        messages({ title:"Attendance Status ",text:`${mesg}`, icon:'success'});
+                    })
+                    .catch(error => {
+                        // console.error('Error uploading data:', error);
+                        messages({text:`${error}`});
+                    });
+                
+            } catch (err) {
+                messages({text:`Error occurred: ${err}`});
+            } 
+        }
+        fetch_data();
+
+    }
+
+    document.querySelectorAll(".take_fields").forEach((data, index) => {
+        document.querySelector('#'+data.id).addEventListener('click', take_attendance );
+    })
+</script>
+{% endblock content %}

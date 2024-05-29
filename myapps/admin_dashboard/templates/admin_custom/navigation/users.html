@@ -1,0 +1,14 @@
+<li class="nav-item" data-id="authuser">
+    <a class="nav-link collapsed" data-toggle="collapse" href="#authuserdrop" aria-expanded="false" aria-controls="authuserdrop">
+      <span class="menu-title">Users</span>
+      <i class="icon-layers menu-icon"></i>
+    </a>
+    <div class="collapse" id="authuserdrop" style="">
+      <ul class="nav flex-column sub-menu">
+        <li class="nav-item"> <a class="nav-link" data-id="authuserClient" href="{% url 'admin_dashboard:changelist' 'authuser' 'Client' %}">Client</a></li>
+        <li class="nav-item"> <a class="nav-link" data-id="authuserAgent" href="{% url 'admin_dashboard:changelist' 'authuser' 'Agent' %}">Agent</a></li>
+        <li class="nav-item"> <a class="nav-link" data-id="authuserVendor" href="{% url 'admin_dashboard:changelist' 'authuser' 'Vendor' %}">Vendor</a></li>
+        <li class="nav-item"> <a class="nav-link" data-id="authuserDriver" href="{% url 'admin_dashboard:changelist' 'authuser' 'Driver' %}">Rider</a></li>
+      </ul>
+    </div>
+  </li>

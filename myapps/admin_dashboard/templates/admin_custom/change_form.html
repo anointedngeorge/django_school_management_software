@@ -1,0 +1,23 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
+
+{% block content %}
+{% include "admin_custom/referer.html" with appname=appname modelname=modelname %}
+<div class="col-md-12 grid-margin stretch-card bg-white p-3">
+    {% change_form_tools request=request object=object %}
+</div>
+<script>
+    document.getElementById('id_classes').addEventListener('change', async function (el) { 
+            const id = el.target.value;
+            const location = document.location.origin;
+            const url = `${location}/api/{{setting.api_version}}/utilities/loadhtmlclasssections/${id}/`;
+            // 
+            const post_data = await fetch(url);
+            const result = await post_data.json();
+            document.getElementById('id_sections').innerHTML = result.message;
+     }, false)
+</script>
+{% endblock content %}

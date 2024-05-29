@@ -1,0 +1,55 @@
+{% load admin_custom_template_tags %} {% load admin_permissions %}
+<div class="col-lg-12">
+    <h4 class="card-title">List all {{verbose_name|upper}}</h4>
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox">
+                </th>
+                <th>
+                    <b>#</b>
+                </th>
+                {% for head in list_display %}
+                <th>
+                    <b>{{head|title}}</b>
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for query in queryset %}
+            <tr>
+                <td>
+                    {% get_attribute query=query name='pk' as objectID %}
+                    <input class="change_list_select" type="checkbox" value="{{objectID}}">
+                </td>
+                <td>{{forloop.counter}}</td>
+                {% for head in filter_list_display %}
+                <td>
+                    {% if forloop.counter0 == 0 %}
+                    <!-- check if  -->
+                    {% check_permission request appname 'view' modelname as user_view %}
+                        {% if user_view %}
+                    <a href="{% url 'admin_dashboard:updateform' appname objectID modelname %}">
+                        {% get_attribute query=query name=head %}
+                    </a
+                        >
+                    {% else %}
+                    {% get_attribute query=query name=head %}
+                    {% endif %}
+                
+          {% else %} {% get_attribute query=query name=head %} {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if queryset|length == 0 %}
+    <div class="text-center my-3">
+        <img src="{{images}}/empty-icon.png">
+        <div class="mt-3">The queryset is empty.</div>
+    </div>
+    {% endif %}
+</div>

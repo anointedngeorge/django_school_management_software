@@ -1,0 +1,23 @@
+<div class="menu_section active">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+        <li>
+            <a href="{% url 'admin:index' %}">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+        </li>
+        <li class="active-sm">
+            <a>
+                <i class="fa fa-edit"></i>
+                Admin Accounts
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu" style="display: none;">
+                <li class="current-page">
+                    <a href="/admin/authuser/customuser/">Super Admin</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

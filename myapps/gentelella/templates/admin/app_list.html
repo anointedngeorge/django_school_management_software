@@ -1,0 +1,8 @@
+{% for nav in navigation  %}
+{% if nav.has_children %}
+    {% include "admin/includes/navs/has_dropdown.html" %}
+{% else %}
+{% include "admin/includes/navs/single.html" %}
+{% endif %}
+{% endfor %}
+

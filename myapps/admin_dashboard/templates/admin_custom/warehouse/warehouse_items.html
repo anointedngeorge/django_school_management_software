@@ -1,0 +1,78 @@
+<div class="col-lg-4 bg-white shadow p-1 mt-2">
+    <form action="{% url 'admin_dashboard:productCartLogs' product.id %}" method="POST">
+        {% csrf_token %}
+    <img src="/media/{{product.image.image.url}}" style="width: 100%; height: 200px;">
+    
+    <hr>
+    <h5 class="text text-center">
+        <b>{{product.name}}</b>
+    </h5>
+    <table class="table table-sm table-borderless ">
+        <tr>
+            <td>
+                <small>
+                    <b>Selling Price:</b>
+                </small>
+                <span>
+                    &#8358;
+                    <span><input type="number" name="selling_price" class="form-control form-control-sm h-20" value="{{product.selling_price}}"></span>
+                </span>
+            </td>
+            <td>
+                {% if product.is_in_stock %}
+                <span class="badge badge-success">In Stock</span>
+                {% else %}
+                <span class="badge badge-warning">Out of Stock</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <small>
+                    <b>Quantity Available:</b>
+                </small>
+                <span>
+                    <span class="badge badge-success">{{product.quantity_available}}</span>
+                </span>
+            </td>
+            <td>
+                <small>
+                    <b>Quantity Sold:</b>
+                </small>
+                <span>
+                    <span class="badge badge-success">{{product.quantity_sold}}</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <small>
+                    <b>Quantity:</b>
+                </small>
+                <input
+                    type="number"
+                    style="width:50px;"
+                    min="1"
+                    value="1",
+                    class="form-control form-control-sm h-20"
+                    name="quantity"
+                >
+            </td>
+            <td>
+                <small>
+                    <b>Size:</b>
+                </small>
+                <small class="badge badge-success">
+                    <b>46</b>
+                </small>
+            </td>
+        </tr>
+    </table>
+    <div class="mt-3 mb-1">
+        <button type="submit" class="btn btn-sm btn-success btn-block">
+            <i class="fa fa-shopping-cart"></i>
+            ADD TO CART
+        </button>
+    </div>
+</form>
+</div>

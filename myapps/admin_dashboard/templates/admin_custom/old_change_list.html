@@ -1,0 +1,22 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% block content %}
+{% include "admin_custom/referer.html" with appname=appname modelname=modelname %}
+<div>
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">List all {{action_title|upper}}</h4>
+                <!-- start of table -->
+                <div class="table-responsive">
+                    {% change_lists_tools request=request object=object queryset=object_list %}
+                </div>
+                <!-- end of table -->
+            </div>
+        </div>
+    </div>
+    {% include "admin_custom/paginator.html" %}
+</div>
+{% endblock content %}

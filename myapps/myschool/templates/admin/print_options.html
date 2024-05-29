@@ -1,0 +1,65 @@
+{% load myschool_template_tags %}
+<form action="{% network 'print_result' %}/" method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>
+                <label>Classes</label>
+                <select
+                    required
+                    name="classes_id"
+                    class="form-control form-control-sm"
+                    onchange="loadClassSection(this.value);"
+                >
+                    <option selected disabled>---</option>
+                    {% for clax in classes   %}
+                    <option value="{{clax.id}}">{{clax.name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <label>Section</label>
+                <select
+                    required
+                    name="sections_id"
+                    id="sections"
+                    class="form-control form-control-sm"
+                ></select>
+            </td>
+            <td>
+                <label>Term</label>
+                <select required name="term_id" class="form-control form-control-sm">
+                    {% for clax in terms  %}
+                    <option value="{{clax.id}}">{{clax.name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <label>Session</label>
+                <select required name="session" class="form-control form-control-sm">
+                    {% for clax in sessions %}
+                    <option value="{{clax.0}}">{{clax.1}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <label>Action</label>
+                <button type="submit" class="btn btn-sm btn-dark btn-block">
+                    <i class="fa fa-print"></i>
+                    Print Result
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+    async function loadClassSection(val) {
+        const sections = document.querySelector("#sections");
+        const url =  `{% network 'getsections' %}/?class_id=${val}`;
+        await fetch(url)
+        .then(response=>response.text())
+        .then(data => {
+            sections.innerHTML = data;
+        } );
+    }
+</script>

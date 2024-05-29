@@ -1,0 +1,9 @@
+{% load admin_custom_template_tags %}
+
+{% get_data object='appcore.models.SystemSettings' name='templatetext' as setting %}
+<div class="text-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/1178/1178479.png" width="200" height="200">
+    <p>
+        <h4 class="text text-danger">{{setting.result_not_found|upper}}</h4>
+    </p>
+</div>

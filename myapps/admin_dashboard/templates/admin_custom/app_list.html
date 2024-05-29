@@ -1,0 +1,39 @@
+{% load admin_navigation %}
+
+{% for navigation in navigations  %}
+<li class="nav-item nav-category">
+    <span class="nav-link">{{navigation.groupname}}</span>
+</li>
+<!--  -->
+{% randomize  as navid %}
+{% if navigation.has_dropdown %}
+<li class="nav-item" data-id="{{navid}}">
+    <a
+        class="nav-link collapsed"
+        data-toggle="collapse"
+        href="#{{navid}}"
+        aria-expanded="false"
+        aria-controls="{{navid}}"
+    >
+        <span class="menu-title">{{navigation.title}}</span>
+        <i class="icon-layers menu-icon"></i>
+    </a>
+    <div class="collapse" id="{{navid}}">
+        <ul class="nav flex-column sub-menu">
+            {% for nav in navigation.children %}
+            <li class="nav-item">
+                <a class="nav-link" data-id="{{navid}}" href="{{nav.href}}">{{nav.title}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</li>
+{% else %}
+<li class="nav-item" data-id="{{navid}}/">
+    <a class="nav-link" href="{{navigation.href}}">
+        <span class="menu-title">{{navigation.title}}</span>
+        <i class="icon-screen-desktop menu-icon"></i>
+    </a>
+</li>
+{% endif %}
+{% endfor %}

@@ -1,0 +1,80 @@
+{% extends "admin/base_site.html" %}
+{% load myschool_template_tags %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="col-lg-12 text-white">
+        <div class="breadcrumb d-flex justify-content-center bg-dar p-4">
+            <div class="row ">
+                <div class="col-lg-8">
+                    <label>Attendance Sheet Code</label>
+                    <input
+                        type="text"
+                        id="attendance_code"
+                        class="form-control"
+                        placeholder="Copy &amp; paste Attendance code"
+                    >
+                </div>
+                <div class="col-lg-4">
+                    <br>
+                    <button type="button" onclick="loadAttendanceForm()" class="btn btn-dark btn-sm">Load Attendance Sheet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    (function() {
+        document.querySelectorAll(".submit-row")[0].style.display = "none";
+    })
+    function _id(el) {
+        return document.querySelector(el);
+    }
+
+    function messages({title='Oops...', text='Something went wrong!', icon='error'}) {
+        Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        footer: ''
+        });
+    }
+
+    // do not delete this part
+    
+    function loadAttendanceForm() {
+        let attendance_code = _id("#attendance_code");
+        let attend = new String(attendance_code.value).trim();
+
+        if (attend != "") {
+          async function fetch_attendance() {
+            let url = `{% network 'selected_student_attendance' %}?code=${attend}`;
+            document.location.href = url;
+          }
+          fetch_attendance();
+        } else {
+            messages({title:'No Empty field allowed', icon:'error', text:'Please Provide Attendance Code.'})
+        }
+    }
+
+   async function loadClassSection(val) {
+        const sections = document.querySelector("#id_sections");
+        const url =  `{% network 'getsections' %}/?class_id=${val.target.value}`;
+        await fetch(url)
+        .then(response=>response.text())
+        .then(data => {
+            sections.innerHTML = data;
+        } );
+    }
+
+    document.querySelector("#id_classes").addEventListener('change', loadClassSection )
+</script>
+{% endblock content %}

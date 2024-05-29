@@ -1,0 +1,46 @@
+{% load navigation %}
+<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+    <!-- <img src="{{img}}/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+    <span class="d-none d-md-block dropdown-toggle ps-2">
+        Action
+    </span>
+</a>
+<!-- End Profile Iamge Icon -->
+<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+    {% for menu in dropdown_menus %}
+    {% query q=menu.query as query %}
+    {% if menu.is_active  %}
+    <li>
+        {% if menu.has_modal %}
+        <a
+            href="#!"
+            class="dropdown-item d-flex align-items-center modalPages"
+            data-bs-toggle="modal"
+            data-bs-target="#modal"
+            data-url="{% if query %}
+            {{menu.url}}?{{query}}
+            {% else %}
+            {{menu.url}}
+            {% endif %}"
+            data-modal_title="{{menu.title}}"
+        >
+            <i class="{{menu.classicon}}"></i>
+            {{menu.title}}
+        </a>
+        {% else %}
+        <a class="dropdown-item d-flex align-items-center" href="{% if query %}
+        {{menu.url}}?{{query}}
+        {% else %}
+        {{menu.url}}
+        {% endif %}">
+            <i class="{{menu.classicon}}"></i>
+            {{menu.title}}
+        </a>
+        {% endif %}
+    </li>
+    <li>
+        <hr class="dropdown-divider">
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>

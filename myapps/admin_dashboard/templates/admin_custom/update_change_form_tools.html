@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Change {{ verbose_name }}</h3>
+        <!-- start of table -->
+        <div class="table-responsive">
+            <form action="{% url 'admin_dashboard:updateform' appname objectid modelname %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{dataform}}
+                <table>
+                    <tr>
+                        <td>
+                            <div class="col-lg-12 mt-4">
+                                <button type="submit" class="btn btn-dark">
+                                    Update {{ verbose_name }}
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-lg-12 mt-4">
+                                <a href="{% url 'admin_dashboard:delete' appname objectid modelname %}" class="btn btn-danger">
+                                    Delete {{ verbose_name }}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- end of table -->
+    </div>
+</div>

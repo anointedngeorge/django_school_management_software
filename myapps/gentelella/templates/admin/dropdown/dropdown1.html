@@ -1,0 +1,52 @@
+{% load navigation %}
+<ul class=" navbar-right list-unstyled">
+    <li class="nav-item dropdown open" style="padding-left: 15px;">
+        <a
+            href="javascript:;"
+            class="user-profile dropdown-toggle"
+            aria-haspopup="true"
+            id="navbarDropdown"
+            data-toggle="dropdown"
+            aria-expanded="false"
+        >
+            Action
+        </a>
+        <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+            <ul class="list-unstyled">
+                {% for menu in dropdown_menus %}
+                {% query q=menu.query as query %}
+                {% if menu.is_active  %}
+                <li>
+                    {% if menu.has_modal %}
+                    <a
+                        href="#!"
+                        class="dropdown-item d-flex align-items-center modalPages"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal"
+                        data-url="{% if query %}
+                        {{menu.url}}?{{query}}
+                        {% else %}
+                        {{menu.url}}
+                        {% endif %}"
+                        data-modal_title="{{menu.title}}"
+                    >
+                        <i class="{{menu.classicon}}"></i>
+                        {{menu.title}}
+                    </a>
+                    {% else %}
+                    <a class="dropdown-item d-flex align-items-center" href="{% if query %}
+                    {{menu.url}}?{{query}}
+                    {% else %}
+                    {{menu.url}}
+                    {% endif %}">
+                        <i class="{{menu.classicon}}"></i>
+                        {{menu.title}}
+                    </a>
+                    {% endif %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </li>
+</ul>

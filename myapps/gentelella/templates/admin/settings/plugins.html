@@ -1,0 +1,72 @@
+{% extends "admin/base_site.html" %}
+
+
+{% block content %}
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Plugin Settings</h5>
+            <!-- Horizontal Form -->
+            <form action="/{{adminsite}}/settings/plugins/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <center>
+                    <h5>Upload Plugin</h5>
+                    {{plugin_form}}
+                </center>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-dark btn-sm btn-block">Upload</button>
+                </div>
+            </form>
+            <!-- End Horizontal Form -->
+        </div>
+    </div>
+</div>
+<!-- print out content -->
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Plugins</h5>
+            <!-- Horizontal Form -->
+            <!-- <button type="button" class="btn btn-sm btn-warning" title="Flush plugin">
+                <i class="bi bi-arrow-clockwise
+              "></i>
+            </button> -->
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered">
+                    <thead class="bg-dark text text-white">
+                        <tr>
+                            <td>Name</td>
+                            <td>Path</td>
+                            <!-- <td>Status</td> -->
+                            <td>Plugin Type</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in plugins  %}
+                        <tr>
+                            <td>{{x.name}}</td>
+                            <!-- <td>{{x.file_path}}</td> -->
+                            <td>{{x.template_file}}</td>
+                            <!-- <td>{{x.status}}</td> -->
+                            <td>{{x.plugin_type}}</td>
+                            <td>
+                                {% if x.status %}
+                                <a href="/{{adminsite}}/plugin/{{x.id}}/deactivate/?status=0&type={{x.plugin_type}}" class="btn btn-sm btn-warning">Deactivate</a>
+                                {% else %}
+                                <a href="/{{adminsite}}/plugin/{{x.id}}/activate/?status=1&type={{x.plugin_type}}" class="btn btn-sm btn-success">Activate</a>
+                                <a href="/{{adminsite}}/plugin/{{x.id}}/delete/" class="btn btn-sm btn-dark">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Horizontal Form -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

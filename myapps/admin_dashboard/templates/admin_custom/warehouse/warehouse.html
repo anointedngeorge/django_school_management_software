@@ -1,0 +1,48 @@
+{% extends "admin_custom/base.html" %}
+{% load static %}
+{% static "seller/images" as images %}
+
+
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-sm table-condensed table-borderless">
+                <tr>
+                    <td class="float-right col-lg-3">
+                        <input placeholder="Search for items" type="text" class="form-control form-control-sm">
+                    </td>
+                    <td class="float-left col-lg-3">
+                        <h3 class="card-title">
+                            <b>Shopping Screen</b>
+                        </h3>
+                    </td>
+                </tr>
+            </table>
+            <!-- start of table -->
+            <div class="row">
+                <div class="col-lg-2">
+                    <h4>Category listing</h4>
+                    <ul>
+                        {% for product_category in product_categories  %}
+                        <li>
+                            <a href="#">{{product_category.name|title}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        {% for product in products  %}
+                        
+                            {% include "admin_custom/warehouse/warehouse_items.html" %}
+                       
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- end of table -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

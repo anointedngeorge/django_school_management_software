@@ -1,0 +1,24 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Sales Items</h4>
+            <!-- start of table -->
+            <div class="table-responsive">
+                <form id="id_sales_item_form" method="POST" action="{% url 'admin_dashboard:salesitem' saleid %}">
+                    {% csrf_token %}
+                    {{salesitemform}}
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-sm btn-dark">Add Sales Item</button>
+                    </div>
+                </form>
+            </div>
+            <!-- end of table -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

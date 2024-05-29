@@ -1,0 +1,53 @@
+{% load admin_custom_template_tags %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <input type="checkbox">
+            </th>
+            {% comment %}
+            <th>
+                <b>#</b>
+            </th>
+            {% endcomment %}
+            {% for head in list_display %}
+            <th>
+                <b>{{head|title}}</b>
+            </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for query in queryset  %}
+        <tr>
+            <td>
+                {% get_attribute query=query name='pk' as objectID %}
+                <input class="change_list_select" type="checkbox" value="{{objectID}}">
+            </td>
+            {% comment %}
+            <td>{{forloop.counter}}</td>
+            {% endcomment %}
+            {% for head in filter_list_display %}
+            <td>
+                {% if forloop.counter0 == 0  %}
+                <a href="{% url 'admin_dashboard:updateform' appname objectID modelname %}">{% get_attribute query=query name=head %}</a>
+                {% else %}
+                    {% if head == 'extra'  %}
+                    {% get_attribute query=query name=head %}
+                        {% comment %} {% include "admin_custom/dropdown/menu1.html" with appname=appname modelname=modelname %} {% endcomment %}
+                    {% else %}
+                        {% get_attribute query=query name=head %}
+                    {% endif %}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% if queryset|length == 0 %}
+<div class="text-center my-3">
+    <img src="{{images}}/empty-icon.png">
+    <div class="mt-3">The queryset is empty.</div>
+</div>
+{% endif %}

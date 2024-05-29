@@ -1,0 +1,14 @@
+{% load admin_custom_template_tags %}
+<!--  -->
+<!--  -->
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <!-- start of table -->
+            <div class="table-responsive">
+                {% change_form_tools request=request object=object %}
+            </div>
+            <!-- end of table -->
+        </div>
+    </div>
+</div>

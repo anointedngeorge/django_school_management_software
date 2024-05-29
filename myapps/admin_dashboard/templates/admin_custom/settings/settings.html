@@ -1,0 +1,30 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <!-- start of table -->
+            <div class="table-responsive">
+                <h3 class="h3">{{page_title}}</h3>
+                <hr>
+                <!--  -->
+                {% if form %}
+                <form action="{% url 'admin_dashboard:settings' name %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form}}
+                    <div class="form-group mt-4">
+                        <button class="btn btn-sm btn-dark" type="submit">Save</button>
+                    </div>
+                </form>
+                {% else %}
+                {% include "admin_custom/notfoundpages/settings_notfound.html" %}
+                {% endif %}
+            </div>
+            <!-- end of table -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

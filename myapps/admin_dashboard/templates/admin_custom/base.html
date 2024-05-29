@@ -1,0 +1,142 @@
+{% load static %}
+{% load tz %}
+
+{% get_current_timezone as TIME_ZONE %}
+
+{% static "admin_custom_assets/css" as css %}
+{% static "admin_custom_assets/fonts" as fonts %}
+{% static "admin_custom_assets/images" as images %}
+{% static "admin_custom_assets/js" as js %}
+{% static "admin_custom_assets/vendors" as vendors %}
+
+
+{% load admin_custom_template_tags %}
+
+{% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            {% if page_title %}
+            {{page_title}} | {{setting.title}}
+            {% else %}
+            Dashboard | {{setting.title}}
+            {% endif %}
+        </title>
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="{{vendors}}/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="{{vendors}}/flag-icon-css/css/flag-icon.min.css">
+        <link rel="stylesheet" href="{{vendors}}/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <!-- endinject -->
+        <!-- Layout styles -->
+        <link rel="stylesheet" href="{{css}}/style.css">
+        <link rel="shortcut icon" href="{{images}}/app_icon.png">
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="{{css}}/admin_custom.css">
+        {% block extrahead %}
+            
+        {% endblock extrahead %}
+    </head>
+    <body>
+        <div class="container-scroller">
+            <!-- partial:../../partials/_navbar.html -->
+            {% include "admin_custom/top_nav.html" %}
+            <!-- partial -->
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial:../../partials/_sidebar.html -->
+                {% include "admin_custom/sidebar.html" %}
+                <!-- partial -->
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <div>
+                            {% for message in messages  %}
+                            <div class="alert alert-{{message.tags}}">{{message|upper|safe}}</div>
+                            {% endfor %}
+                        </div>
+                        {% block content %}
+  
+                        {% endblock content %}
+                    </div>
+                    <!-- content-wrapper ends -->
+                    <!-- partial:../../partials/_footer.html -->
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">
+                                Copyright © {% localtime on %}
+                                {% now "Y" %}
+                            {% endlocaltime %} {{setting.copyright}}
+                            </span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                                <a href="#" target="_blank">{{setting.address}}</a>
+                                {{setting.sidemenu_title}}
+                            </span>
+                        </div>
+                    </footer>
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        {% include "admin_custom/modal.html" %}
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="{{vendors}}/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="{{js}}/off-canvas.js"></script>
+        <script src="{{js}}/misc.js"></script>
+        <script>
+            function preloader(message='Loading...') {
+                return `<i>${message}</i>`;
+            }
+
+            // load pages
+            async function loadpages(params) {
+                event.preventDefault()
+                const dst = event.target.dataset;
+                document.querySelector("#modalbody").innerHTML = preloader();
+           
+                const req = await fetch(dst.url);
+                if (req.ok) {
+                    const res = await req.text();
+                    document.querySelector("#modaltitle").innerHTML=dst.modal_title;
+                    document.querySelector("#modalbody").innerHTML=res;
+                } else {
+                    document.querySelector("#modalbody").innerHTML= req.statusText;
+                }
+            }
+            // 
+            const modalBtns =  document.querySelectorAll(".modalbtns");
+            modalBtns.forEach(function(element, index) {
+                element.addEventListener('click', async (el) => {
+                    el.preventDefault();
+                    document.querySelector("#modalbody").innerHTML = preloader();
+                    const dst = await el.target.dataset;
+                    // console.log(dst);
+                    const req = await fetch(dst.url);
+                    if (req.ok) {
+                        const res = await req.text();
+                        document.querySelector("#modaltitle").innerHTML=dst.modal_title;
+                        document.querySelector("#modalbody").innerHTML=res;
+                    } else {
+                        document.querySelector("#modalbody").innerHTML= req.statusText;
+                    }
+                    
+                }, True);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+from myschool.admin.index import *

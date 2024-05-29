@@ -1,0 +1,30 @@
+{% load myschool_template_tags %}
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-2">
+            <ul>
+                {% for time  in  durations %}
+                <li>
+                    <b>{{time}}</b>
+                </li>
+                <br>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-lg-10">
+            <div class="row">
+                {% for day, val in datas.items  %}
+                <div class="col-lg-4">
+                    <b>{{day}}</b>
+                    {% for v in val  %}
+                    <b>
+                        <td>{{v.subject}}</td>
+                    </b>
+                    {% endfor %}
+
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

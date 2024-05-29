@@ -1,0 +1,10 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% block content %}
+{% include "admin_custom/referer.html" with appname=appname modelname=modelname %}
+<div class="col-md-12 grid-margin stretch-card">
+    {% update_form_tools request=request object=object objectid=objectid  model=model %}
+</div>
+{% endblock content %}

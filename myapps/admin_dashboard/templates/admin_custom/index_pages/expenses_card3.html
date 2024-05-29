@@ -1,0 +1,82 @@
+{% load admin_custom_template_tags %}
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="align-items-baseline report-summary-header">
+                            <h5 class="font-weight-semibold">Fulfillment</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row report-inner-cards-wrapper">
+                    <div class="col-md -6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Orders</span>
+                            <h4>
+                                {% show_count object='orders.models.Order' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'orders' 'Order' %}" class="link">View List</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform'  'orders' 'Order' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-success">
+                            <i class="bi-basket2" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Packages</span>
+                            <h4>
+                                {% show_count object='packages.models.Packages' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'packages' 'Packages' %}" class="link">View list</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform' 'packages' 'Packages' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-danger">
+                            <i class="bi-basket2" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">Tasks</span>
+                            <h4>
+                                {% show_count object='tasks.models.Task' %}
+                                <a href="{% url 'admin_dashboard:changelist'  'tasks' 'Task' %}" class="link">View list</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform'  'tasks' 'Task' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-primary">
+                            <i class="bi-basket2" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl report-inner-card">
+                        <div class="inner-card-text">
+                            <span class="report-title">admin_customer Reports</span>
+                            <h4>
+                                {% show_count object='reports.models.admin_customReports' %}
+                                <a href="{% url 'admin_dashboard:changelist' 'reports' 'admin_customReports' %}" class="link">View List</a>
+                            </h4>
+                            <span class="report-count">
+                                <i class="fa-brands fa-github-square"></i>
+                                <a href="{% url 'admin_dashboard:changeform' 'reports' 'admin_customReports' %}" class="link"> Add</a>
+                            </span>
+                        </div>
+                        <div class="inner-card-icon bg-warning">
+                            <i class="bi-basket2" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{% load admin_custom_template_tags %}
+
+
+{% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
+
+{% set_path 'admin_custom/login_pages' pagename=setting.login_form  default_pagename='default' as pagepath %}
+
+
+
+{% include pagepath with pagename=setting.login_form %}

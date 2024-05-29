@@ -1,0 +1,24 @@
+{% extends "admin_custom/base.html" %}
+{% load admin_custom_template_tags %}
+
+
+{% block content %}
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create A new Salesbook</h4>
+            <!-- start of table -->
+            <div class="table-responsive">
+                <form action="{% url 'admin_dashboard:sales' %}" method="POST">
+                    {% csrf_token %}
+                    {{salesform}}
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-sm btn-dark">Create Salesbook</button>
+                    </div>
+                </form>
+            </div>
+            <!-- end of table -->
+        </div>
+    </div>
+</div>
+{% endblock content %}
