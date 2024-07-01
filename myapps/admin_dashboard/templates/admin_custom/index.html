@@ -4,7 +4,5 @@
 {% get_data object='appcore.models.SystemSettings' name='settingname' as setting %}
 
 {% set_path 'admin_custom/dashboard' pagename=setting.dashboard_index  default_pagename='default' as pagepath %}
-
-
-
+<!-- this return a dynamic file name -->
 {% include pagepath with pagename=setting.dashboard_index %}

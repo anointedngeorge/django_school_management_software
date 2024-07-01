@@ -1,0 +1,59 @@
+<div class="col-lg-12">
+    <p>Form Teacher's Comment</p>
+    <form method="POST" action="{% url 'admin_dashboard:resultcomment' %}" onsubmit="form_teacher_comment();">
+        {% csrf_token %}
+        <div class="form-group">
+            <input
+                hidden
+                type="text"
+                name="session"
+                value="{{result.session}}"
+            >
+            <input
+                hidden
+                type="text"
+                name="student_code"
+                value="{{result.student_code}}"
+            >
+            <input
+                hidden
+                type="text"
+                name="classes_id"
+                value="{{result.classes_id}}"
+            >
+            <input
+                hidden
+                type="text"
+                name="sections_id"
+                value="{{result.sections_id}}"
+            >
+            <input
+                hidden
+                type="text"
+                name="commentor"
+                value="{{request.user.email}}"
+            >
+            <input
+                hidden
+                type="text"
+                name="term_id"
+                value="{{result.term_id}}"
+            >
+            <input
+                hidden
+                type="text"
+                name="subject_id"
+                value="{{result.subject_id}}"
+            >
+            <textarea
+                name="comment"
+                required
+                class="form-control border border-dark"
+                placeholder="Leave a comment..."
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-dark">Comment</button>
+        </div>
+    </form>
+</div>

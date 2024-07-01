@@ -165,10 +165,10 @@ def update_form_tools(context, request=None, object=None, model=None, objectid=N
             appname = object._meta.app_label
             modelname = object._meta.model.__name__
         
-            # check_user_permission =  check_permission(request=request, appname=appname, crud='change' , model=modelname)
-            # if not check_user_permission:
-            #     django_message.error(request, f"{request.user.email} is not permitted to update this {modelname}".upper() )
-            #     return  context
+            check_user_permission =  check_permission(request=request, appname=appname, crud='change' , model=modelname)
+            if not check_user_permission:
+                django_message.error(request, f"{request.user.email} is not permitted to update this {modelname}".upper() )
+                return  context
             
             context['verbose_name'] = f"{verbose_name} - ({m})"     
             if objectid:
@@ -177,11 +177,11 @@ def update_form_tools(context, request=None, object=None, model=None, objectid=N
             else:
                 context['dataform'] = fm
 
-            print(context)
+            # print(context)
         return context
     except Exception as e:
         import traceback
-        traceback.print_exc()
+        # traceback.print_exc()
 
 
 

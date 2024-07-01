@@ -1,0 +1,90 @@
+{% load admin_result_tags %}
+<style>
+     .form-children {
+            width: 60px !important;
+        }
+</style>
+<table border="1" style="width: 100%;">
+    <thead>
+        <tr class="text text-center">
+            <th>
+                <small>s/n</small>
+            </th>
+            {% for head in student_form.label_heads %}
+            <th>
+                <small>{{head|title}}</small>
+            </th>
+            {% endfor %}
+            <th>
+                <small>Action</small>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result_head in student_form.container %}
+            
+        
+        {% get_data_with_index forloop.counter0 student_form.students as student_code %}
+        <!--  -->
+        <tr id="tr_{{forloop.counter0}}">
+            <td>{{forloop.counter}}</td>
+            <td>
+                <small>{{student_code.0}}</small>
+                <input
+                    type="text"
+                    hidden
+                    name="student_{{forloop.counter0}}"
+                    value="{{student_code.0}}"
+                    readonly
+                >
+            </td>
+            <td>
+                <small>{{student_code.1}}</small>
+                <input
+                    type="text"
+                    hidden
+                    name="student_code_{{forloop.counter0}}"
+                    value="{{student_code.1}}"
+                    readonly
+                >
+            </td>
+            <td>
+                <small>{{student_form.subject}}</small>
+                <input
+                    type="text"
+                    hidden
+                    name="subject_{{forloop.counter0}}"
+                    value="{{student_form.subject}}"
+                    readonly
+                >
+            </td>
+            <td>
+                <div style="max-height: 40px; max-width: 40px;">
+                    <small>{{student_form.subject_id}}</small>
+                </div>
+                <input
+                    type="text"
+                    hidden
+                    name="subject_id_{{forloop.counter0}}"
+                    value="{{subject_form.subject_id}}"
+                    readonly
+                >
+            </td>
+            <!--  -->
+            {% for head in result_head %}
+            {% form_output head student_form as form %}
+            <td style="width: 30px;">{{form}}</td>
+            {% endfor %}
+            <td>
+                <button
+                    type="button"
+                    data-counter="{{forloop.counter0}}"
+                    data-index="{{student_code.1}}"
+                    class="result_add_btn"
+                    id="result_add_btn_{{forloop.counter0}}"
+                >Add</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

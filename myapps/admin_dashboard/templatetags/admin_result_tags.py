@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import permission_required
 from django.utils.html import format_html
 from django.conf import settings
 from decouple import config
+from myschool.models.result import ResultComment
 from myschool.models.timetable import Timetable
 
 from myschool.plugins.system_calendar import calenday_days
@@ -15,6 +16,44 @@ register = template.Library()
 
 redirect_path = f"/{config('BASE_APP_NAME')}"
 
+
+@register.simple_tag
+def format_title( title = '' ):
+    try:
+        content = " ".join(str(title).split("_"))
+        return content
+    except:
+        pass
+
+
+@register.simple_tag
+def signature():
+    url = 'https://w7.pngwing.com/pngs/86/846/png-transparent-signature-signature-angle-text-monochrome-thumbnail.png'
+    return format_html(f"<img src='{url}' width='150' />")
+
+
+@register.simple_tag
+def comment( classes_id, section_id, term_id, subject_id, session , student_code):
+    '''
+        For performing result comments by form teachers
+    '''
+    try:
+        
+        comm = ResultComment.objects.all().filter(
+                classes_id=classes_id, 
+                sections_id=section_id,
+                term_id = term_id,
+                subject_id = subject_id,
+                session = session
+            )
+        if comm.exists():
+            com = comm.first().comment
+            if com.__contains__(student_code):
+                return com.get(student_code)
+            else:
+                return com
+    except Exception as e:
+        print(e)
 
 
 @register.simple_tag
@@ -60,9 +99,6 @@ def bootstrap_form(form_list):
         return format_html(table_html)
     except Exception as e:
         return format_html(f"<p>{e}</p>")
-
-
-
 
 
 @register.filter
@@ -172,13 +208,14 @@ def bootstrap_edit_table(form_list):
         return format_html(f"<span>No Result Found: {e}</span>")
 
 
-
+container = []
 
 @register.simple_tag
-def form_output(form_lable ,  dataform):
+def form_output(form_lable ,  dataform, exclude):
     """
     This will be used to print out form field when the key is passed.
     """
+    import re
     try:
         return dataform[form_lable]
     except Exception as e:

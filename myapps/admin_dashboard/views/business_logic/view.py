@@ -247,13 +247,16 @@ def updateResultform(request, id, query, context):
 
 def printresult(request, id, query, context):
     try:
-   
         if request.method == "POST":
             student_container = []
             context = context
             context['title'] = "Print Results"
             context['query'] = query
             data = request.POST.dict()
+            data.pop('action')
+            # select which action to perform, whether to print result or to make a comment on the result
+            action_choosen = request.POST.dict().get('action', None)
+      
             # remove csrf token from the post request
             data.pop("csrfmiddlewaretoken")
             container = []
@@ -282,11 +285,11 @@ def printresult(request, id, query, context):
                 for index, foundResult in enumerate(foundResults):
                     
                     result = foundResult.result
-                    subject =  foundResult.subject.name
-                    classes = foundResult.classes.name
-                    sections = foundResult.sections.name.name
+                    subject =  foundResult.subject
+                    classes = foundResult.classes
+                    sections = foundResult.sections
                     session = foundResult.session
-                    term = foundResult.term.name
+                    term = foundResult.term
 
                     # print(foundStudents, 'students')
 
@@ -297,6 +300,8 @@ def printresult(request, id, query, context):
                         if ((STUDENT_CONTEXT.__contains__(student_code)) and (result.get(student_code) != None)):
                             # total = 0
                             student_fullname = f"{student.first_name} {student.middle_name} {student.last_name}"
+                            student_id = student.id
+                          
                             # school information
                             STUDENT_CONTEXT.get(student_code)["school_title"] = "St. Augustin Secondary School"
                             STUDENT_CONTEXT.get(student_code)["school_address"] = "24, ABC street, DEF Road, Enugu State"
@@ -305,13 +310,18 @@ def printresult(request, id, query, context):
 
 
                             STUDENT_CONTEXT.get(student_code)["fullname"] = student_fullname
+                            STUDENT_CONTEXT.get(student_code)["student_id"] = student_id
                             STUDENT_CONTEXT.get(student_code)["student_code"] = student_code
                             STUDENT_CONTEXT.get(student_code)["photo"] = student.photo.path if student.photo else ''
-                            STUDENT_CONTEXT.get(student_code)["subject"] = subject
-                            STUDENT_CONTEXT.get(student_code)["classes"] = classes
-                            STUDENT_CONTEXT.get(student_code)["sections"] = sections
+                            STUDENT_CONTEXT.get(student_code)["subject"] = subject.name
+                            STUDENT_CONTEXT.get(student_code)["subject_id"] = subject.id
+                            STUDENT_CONTEXT.get(student_code)["classes"] = classes.name
+                            STUDENT_CONTEXT.get(student_code)["classes_id"] = classes.id
+                            STUDENT_CONTEXT.get(student_code)["sections"] = sections.name.name
+                            STUDENT_CONTEXT.get(student_code)["sections_id"] = sections.id
                             STUDENT_CONTEXT.get(student_code)["session"] = session
-                            STUDENT_CONTEXT.get(student_code)["term"] = term
+                            STUDENT_CONTEXT.get(student_code)["term"] = term.name
+                            STUDENT_CONTEXT.get(student_code)["term_id"] = term.id
                             STUDENT_CONTEXT.get(student_code)["class_no"] = foundStudents.count()
                             total =  result.get(student_code).get('total')
                             STUDENT_CONTEXT.get(student_code)["total"] += int(total)
@@ -340,13 +350,23 @@ def printresult(request, id, query, context):
             context['result_headings'] = system_data.get('result_fields', "student, total")
   
 
-            return TemplateResponse(
-                request=request,
-                template="admin_custom/templateresponse/termly_results.html",
-                context=context,
-                status=200,
-                
-            )
+            if action_choosen == "print":
+                return TemplateResponse(
+                    request=request,
+                    template="admin_custom/templateresponse/termly_results.html",
+                    context=context,
+                    status=200,
+                    
+                )
+
+            elif action_choosen == "comment":
+                return TemplateResponse(
+                    request=request,
+                    template="admin_custom/templateresponse/termly_results_comment.html",
+                    context=context,
+                    status=200,
+                    
+                )
         else:
             return redirect("admin_dashboard:index")
     except Exception as e:

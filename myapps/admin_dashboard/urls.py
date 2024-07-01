@@ -41,6 +41,9 @@ try:
         
         path(f"dashboard/result-printing/", 
              PrintResults.as_view(), name="resultprinting"),
+          #    
+        path(f"dashboard/result-comment/", 
+             resultComment, name="resultcomment"),
 
         path(f"dashboard/student/promotion", 
              StudentPromotion.as_view(), name="studentpromotion"),

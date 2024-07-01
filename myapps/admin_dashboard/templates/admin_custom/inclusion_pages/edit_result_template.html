@@ -1,5 +1,17 @@
 {% load admin_result_tags %}
-<table style="width: 100%;" border="1">
+<style>
+    .form-children {
+           width: 70px !important;
+           font-size: 12px;
+       }
+   
+   .form_children_readonly {
+           width: 100px !important;
+           border: none !important;
+           font-size: 12px;
+   }
+</style>
+<table class="table table-sm" border="1">
     <thead>
         <tr class="text text-center">
             <th>
@@ -7,33 +19,22 @@
             </th>
             {% for head in student_form.label_heads %}
             <th>
-                <small>{{head|title}}</small>
+                {% format_title head as head_title %}
+                <small>{{head_title|title}}</small>
             </th>
             {% endfor %}
-            <th>
-                <small>Action</small>
-            </th>
         </tr>
     </thead>
     <tbody>
         {% for result_head in student_form.container %}
-        <tr id="tr_{{forloop.counter0}}">
+        {% get_data_with_index forloop.counter0 student_form.students as student_code %}
+        <tr id="tr_{{forloop.counter0}}" class="result_rows" title="{{student_code.1}}">
             <td>{{forloop.counter}}</td>
             <!--  -->
             {% for head in result_head %}
-            {% form_output head student_form as form %}
+            {% form_output head student_form student_form.exclude as form %}
             <td style="width: 30px;">{{form}}</td>
             {% endfor %}
-            {% get_data_with_index forloop.counter0 student_form.students as student_code %}
-            <td>
-                <button
-                    type="button"
-                    data-counter="{{forloop.counter0}}"
-                    data-index="{{student_code.1}}"
-                    class="result_add_btn"
-                    id="result_add_btn_{{forloop.counter0}}"
-                >Add</button>
-            </td>
         </tr>
         {% endfor %}
     </tbody>

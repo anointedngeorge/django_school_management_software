@@ -20,7 +20,9 @@ USERS_EXCLUDED =  [
             'permissions',
             'is_staff',
             'is_superuser',
-            'finger_signature'
+            'finger_signature',
+            'code',
+            'joined_date'
         ]
 
 
@@ -30,12 +32,13 @@ class Students(CustomUser, CoreAttrs):
     middle_name = models.CharField(max_length=150, blank=True, null=True)
     phone = models.CharField(max_length=150, blank=True, null=True)
     parent_registration_code = models.CharField(max_length=150, blank=True, null=True)
+    gender = models.CharField(max_length=150, blank=True, null=True, choices=[('female','Female'), ('male','Male')])
     # parent_phone = models.CharField(max_length=150, blank=True, null=True)
     # parent_email = models.CharField(max_length=150, blank=True, null=True)
     # parent_address = models.CharField(max_length=150, blank=True, null=True)
     sections = models.ForeignKey("myschool.Sections", on_delete=models.CASCADE, related_name='student_sections')
     classes = models.ForeignKey("myschool.Classes", on_delete=models.CASCADE, related_name='student_classes')
-    photo = models.ImageField(upload_to=generate_filename)
+    photo = models.ImageField(upload_to=generate_filename, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Student'
@@ -49,7 +52,7 @@ class Students(CustomUser, CoreAttrs):
 
     def profile(self):
         if not self.photo:
-            img = f"<img src='...' alt='...' width=50 height=50 />"
+            img = f"<img src='' alt='...' width=50 height=50 />"
             return format_html(img)
         else:
             img = f"<img src='{self.photo.url}' width=50 height=50 />"

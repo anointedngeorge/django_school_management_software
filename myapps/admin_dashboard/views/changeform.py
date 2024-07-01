@@ -67,7 +67,7 @@ class ChangeFormFunc(TemplateView):
             if hasattr(importedapp, modelname):
                 obj = getattr(importedapp, modelname)
                 # check if the form contains files
-                fm = obj.form(self)(request.POST) if bool(request.FILES) == False else obj.form(self)(request.POST, request.FILES)
+                fm = obj.form()(request.POST) if bool(request.FILES) == False else obj.form()(request.POST, request.FILES)
                 if fm.is_valid():
                     fm.save()
                     django_message.success(request, f"{modelname} {ErrorMessages.FORM_ON_SUCCESS}")
@@ -202,16 +202,17 @@ class UpdateFormFunc(TemplateView):
             if hasattr(importedapp, modelname):
                 obj = getattr(importedapp, modelname)
                 m =  obj.objects.all().filter(id=objectid).get()
-                # check if form contains a file
-                fm = obj.form(self)(request.POST, instance=m) if bool(request.FILES) == False else obj.form(self)(request.POST, request.FILES, instance=m)
+                
+                fm = obj.form()(request.POST, instance=m) if bool(request.FILES) == False else obj.form()(request.POST, request.FILES, instance=m)
                 if fm.is_valid():
                     fm.save()
                     django_message.success(request, f"{modelname} Updated.")
                 else:
                     django_message.error(request, f"{modelname} failed to create.")
             return redirect(request.META.get("HTTP_REFERER"))
-    
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             return redirect(request.META.get("HTTP_REFERER"))
 
 

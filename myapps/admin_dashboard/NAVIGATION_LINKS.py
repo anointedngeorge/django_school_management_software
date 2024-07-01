@@ -34,7 +34,9 @@ NAVIGATION_LINKS = [
         "href":link('admin_dashboard','resultprinting'),
         "has_dropdown":True, 
         "children":[
+                    {"title":"Uploaded Results", "href":link(appname="myschool", modelname='Results')},
                     {"title":"Result Printing", "href":link('admin_dashboard','resultprinting')},
+                    {"title":"Result Comments", "href":link(appname="myschool", modelname='ResultComment')},
                 ],
     },
 

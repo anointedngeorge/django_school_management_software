@@ -3,6 +3,7 @@ TENANT_CORE_APPS = [
     'library',
     'appcore',
     'admin_dashboard',
+    'error_handlers'
 ]
 
 

@@ -1,35 +1,13 @@
 from django import forms
 # from django.contrib.postgres.forms.jsonb import JSONField
 import json
+from myschool.forms.result_form_fields import *
 from myschool.plugins.session_generator import sessionGenerator
 from myschool.models.school_module import Classes, Sections, SubjectSelection, Term
 from myschool.models.school_users import Students
 from myschool.models.result import Results
 from django.forms.widgets import TextInput
 import importlib
-
-
-# module = __import__("myschool.models.result")
-# Results = getattr(module, "Results")
-
-
-class ResultJSONFormField(forms.CharField):
-    def prepare_value(self, value):
-        if value is None:
-            return json.dumps([], indent=4)  # Default value: empty list of dictionaries
-       
-        return json.dumps(value, indent=4)
-
-    def to_python(self, value):
-
-        try:
-            return json.loads(value)
-        except (TypeError, ValueError):
-            return None
-
-    def validate(self, value):
-        # Add custom validation if needed
-        pass
 
 
 
@@ -42,38 +20,30 @@ class ResultForm(forms.ModelForm):
                     'teacher',
                     'classes','sections','term','subject','session'
                   ]
-        # exclude = ['result']
+        
+# start of add result form field
+
+complex_fields_for_add_result = RESULT_PERMANENT_FORM_FIELDS + MAIN_RESULT_FIELDS
+complex_fields_for_add_result_filter = []
+
+# for editing
+complex_fields_for_edit_result_filter = []
+
+FORM_LABEL_HEADS = [x.get('name') for x in MAIN_RESULT_FIELDS]
+# exclude form fields you do not want to display
+# server for both edit and add form
+FORM_LABEL_HEADS_FOR_RESULT_EXCLUDE = ['subject_id']
+
+# ...........................................
+FORM_LABEL_HEADS_FOR_RESULT = []
+# perform form field exclusion
+for x in complex_fields_for_add_result:
+    if x.get('name') not in FORM_LABEL_HEADS_FOR_RESULT_EXCLUDE:
+        FORM_LABEL_HEADS_FOR_RESULT.append(x.get('name'))
+        complex_fields_for_add_result_filter.append(x)
 
 
-
-# {'name':'grade', 'type':'text', 'has_choices':True, 'choices':[]}
-complex_fields = [
-    {'name':'assignment','readonly':False, 'classname':'fields', 'has_choices':False, 'value':"", 'choices':[], 'is_hidden':False },
-    {'name':'quiz1', 'readonly':False, 'classname':'fields', 'has_choices':False, 'value':"", 'choices':[], 'is_hidden':False },
-    {'name':'quiz2', 'readonly':False, 'classname':'fields', 'has_choices':False, 'value':"", 'choices':[], 'is_hidden':False },
-    
-    # irreplacable fields
-    {'name':'exams', 'readonly':False, 'classname':'fields', 'has_choices':False, 'value':"", 'choices':[], 'is_hidden':False },
-    {'name':'total', 'readonly':True, 'classname':'total nonefields', 'has_choices':False, 'value':"", 'choices':[], 'is_hidden':False },
-    {'name':'grade', 'readonly':True, 'classname':'grade nonefields', 'has_choices':False, 'value':"", 'choices':[
-            ('A',' A'),
-            ('B',' B'),
-            ('C',' C'),
-            ('E',' E'),
-            ('F',' F'),
-    ], 'is_hidden':False },
-     {'name':'remarks', 'type':'text', 'readonly':True, 'classname':'remarks nonefields', 'has_choices':False, 'value':"", 'choices':[
-            ('excellent','Excellent'),
-            ('very_good',' Very Good'),
-            ('good',' Good'),
-            ('fair',' Fair'),
-            ('poor',' Poor'),
-    ], 'is_hidden':False },
-]
-
-
-FORM_LABEL_HEADS = [x.get('name') for x in complex_fields]
-
+# ..........................................................................
 class ResultStudentParameterForm(forms.Form):
     # creating a dynamic django forms
     def __init__(self, context={}, *args, **kwargs):
@@ -81,6 +51,7 @@ class ResultStudentParameterForm(forms.Form):
         self.container = []
         self.students = []
         self.subject = "None"
+        self.exclude = tuple(FORM_LABEL_HEADS_FOR_RESULT_EXCLUDE)
         self.teacher_id = context.get('teacher_id')
         self.subject_id = context.get('subject_id')
         self.section_id = context.get('sections_id')
@@ -88,7 +59,9 @@ class ResultStudentParameterForm(forms.Form):
         self.session = context.get('session')
         self.term_id = context.get('term_id')
         
-        self.label_heads = ['student','student_code','subject','subject_id'] + FORM_LABEL_HEADS
+        # set the form head
+        self.label_heads = FORM_LABEL_HEADS_FOR_RESULT
+        # update the complex field
         query = {
             'subject_id':self.subject_id,
             'sections_id':self.section_id,
@@ -108,45 +81,92 @@ class ResultStudentParameterForm(forms.Form):
             )
             self.subject = found_selected_courses.subject
             self.subject_id = found_selected_courses.subject.id
+            # 
             if students.exists():
                 for index in range(0, len(students)):
                     foundStudent =  students[index]
                     name = f"{foundStudent.first_name} {foundStudent.last_name}"
                     # fetch the students registration code, and store it as a tuple
-                    self.students.append((name,foundStudent.students.code))
+                    self.students.append((name, foundStudent.students.code))
                     # n is used to hold the forms field names, and order it will printing it out.
                     # [form_0,form_1 ...]
                     # [form_1, form_1 ...]
                     n = []
-                    for x in range(0,len(complex_fields)):
-                        data = complex_fields[x]
+                    # iterate on the complex fields or result fields
+                    
+                    for x in range(0, len(complex_fields_for_add_result_filter)):
+                        
+                        data = complex_fields_for_add_result_filter[x]
+                       
                         classname = data.get("classname")
                         readonly = data.get("readonly")
                         hidden = data.get("is_hidden", False)
-                        # convert all names in data to have _of index, so the form can create properly
+                        # convert all names in data to have indexes, so the form can create properly
                         key = f"{data.get('name')}_{index}"
-                        n.append(key)
-                        # print(n)
 
-                        if data.get('has_choices'):
-                            self.fields[key] = forms.ChoiceField(choices=data.get("choices"),
-                                    widget=forms.Select(attrs={'class':f'form-children {classname}', 'readonly':readonly}))
-                        else:
-                            
-                            self.fields[key] = forms.CharField(
-                                    label=f"{key}",
+                        n.append(key)
+                        # student the extra fields
+
+                        self.fields[f"student_{index}"] = forms.CharField(
+                                    label=f"student_{index}",
                                     widget=TextInput(
                                         attrs={
-                                                'class':f'form-children {classname}', 
-                                                'readonly':readonly,
-                                                'hidden':hidden
+                                                'class':f'form_children_readonly result_{index}', 
+                                                'readonly':True,
+                                                'value':f"{foundStudent.first_name} {foundStudent.last_name}"
                                             }
                                     )
                                 )
-                            
-                    # print(n)
+
+                        self.fields[f"subject_{index}"] = forms.CharField(
+                                    label=f"student_{index}",
+                                    widget=TextInput(
+                                        attrs={
+                                                'class':f'form_children_readonly result_{index}', 
+                                                'readonly':True,
+                                                'value':self.subject
+                                            }
+                                    )
+                                )
+                        self.fields[f"subject_id_{index}"] = forms.CharField(
+                                    label=f"subject_id_{index}",
+                                    widget=TextInput(
+                                        attrs={
+                                                'class':f'form_children_readonly', 
+                                                'readonly':True,
+                                                'value':self.subject_id
+                                            }
+                                    )
+                                )
+                        self.fields[f"student_code_{index}"] = forms.CharField(
+                                    label=f"student_code_{index}",
+                                    widget=TextInput(
+                                        attrs={
+                                                'class':f'form_children_readonly result_{index}', 
+                                                'readonly':True,
+                                                'value':foundStudent.code
+                                            }
+                                    )
+                                )
+                        
+                        if data.get('has_choices'):
+                            self.fields[key] = forms.ChoiceField(choices=data.get("choices"),
+                                    widget=forms.Select(attrs={'class':f'form-children {classname} result_{index}', 'readonly':readonly}))
+                        else:
+                            self.fields[key] = forms.CharField(
+                                    label=f"{key}",
+                                    widget=TextInput(
+                                    attrs={
+                                            'class':f'form-children {classname} result_{index}', 
+                                            'readonly':readonly,
+                                            'hidden':hidden
+                                        }
+                                    )
+                                )
+                    
                     self.container.append(n)
-                    # print(self.students)
+                    # print(self.container)
+                    
             else:
                 self.fields['no_student_found'] = forms.CharField(
                                     label="No Student(s) found!",
@@ -169,12 +189,10 @@ class ResultStudentParameterForm(forms.Form):
                                 )
       
 
-        
-
-
-
-
+       
 def foundUserForm(self, fields, index, foundResult, n):
+    container = []
+
     for field in fields:
         nn = field.get("name")
         key = f"{nn}_{index}"
@@ -184,7 +202,7 @@ def foundUserForm(self, fields, index, foundResult, n):
         readonly = field.get("readonly")
         is_hidden = field.get("is_hidden")
         show_label = field.get("show_label", True)
-
+        # print(key)
         n.append(key)
         
         if field.get('has_choices'):
@@ -192,7 +210,7 @@ def foundUserForm(self, fields, index, foundResult, n):
                 initial=f"{initial_data}",
                 choices=field.get("choices"),
                 widget=forms.Select(attrs={
-                        'class':f'form-children {classname}', 
+                        'class':f'form-children {classname} result_{index}',
                         'readonly':readonly,
                         'title':f"{initial_data}",
                         'hidden':is_hidden,
@@ -206,7 +224,7 @@ def foundUserForm(self, fields, index, foundResult, n):
                     
                     widget=TextInput(
                         attrs={
-                            'class':f'form-children {classname}', 
+                            'class':f'form-children {classname} result_{index}', 
                             'readonly':readonly,
                             'title':f"{initial_data}",
                             'hidden':is_hidden,
@@ -214,8 +232,6 @@ def foundUserForm(self, fields, index, foundResult, n):
                         }
                     )
                 )
-
-
 
 
 def notfoundUserForm(self, fields, index, n):
@@ -253,39 +269,44 @@ def notfoundUserForm(self, fields, index, n):
                 )
 
 
-
-
 class EditResultStudentForm(forms.Form):
     # creating a dynamic django forms
     def __init__(self, object_id=None, *args, **kwargs):
         try:
             super(EditResultStudentForm, self).__init__(*args, **kwargs)
             result2 =  Results.objects.all().filter(id=object_id)
+           
             result =  result2.first()
             sections_id = result.sections.id
             classes_id = result.classes.id
+            self.exclude = ()
             selected_students = Students.objects.all().filter(classes_id=classes_id, sections_id=sections_id)
             self.container = []
             self.students = []
             get_results = result.result
-            self.label_heads = ['student','student_code','subject','subject_id']
-            self.label_heads += FORM_LABEL_HEADS
-
+            head_fields = ['student','student_code','subject','subject_id'] + FORM_LABEL_HEADS
+            self.label_heads = [x for x in head_fields if x not in FORM_LABEL_HEADS_FOR_RESULT_EXCLUDE]
+            
             if result2.exists():
                 # order by students
                 for index, stud in enumerate(selected_students):
                     n = []
-                    fields  =  [
-                    {'name':'student','readonly':True, 'classname':'', 'has_choices':False, 'value':f"{stud.first_name} {stud.last_name}", 'choices':[], 'is_hidden':False, 'show_label':True},
-                    {'name':'student_code','readonly':True, 'classname':'', 'has_choices':False, 'value':f"{stud.code}", 'choices':[], 'is_hidden':False, 'show_label':False},
-                    {'name':'subject','readonly':True, 'classname':'', 'has_choices':False, 'value':f"{result.subject.name}", 'choices':[], 'is_hidden':False, 'show_label':False},
-                    {'name':'subject_id','readonly':True, 'classname':'', 'has_choices':False, 'value':f"{result.subject.id}", 'choices':[], 'is_hidden':False, 'show_label':False},
-                ] + complex_fields
+                    fields2  =  [
+                                {'name':'student','readonly':True, 'classname':'form_children_readonly', 'has_choices':False, 'value':f"{stud.first_name} {stud.last_name}", 'choices':[], 'is_hidden':False, 'show_label':True},
+                                {'name':'student_code','readonly':True, 'classname':'form_children_readonly', 'has_choices':False, 'value':f"{stud.code}", 'choices':[], 'is_hidden':False, 'show_label':False},
+                                {'name':'subject','readonly':True, 'classname':'form_children_readonly', 'has_choices':False, 'value':f"{result.subject.name}", 'choices':[], 'is_hidden':False, 'show_label':False},
+                                {'name':'subject_id','readonly':True, 'classname':'form_children_readonly', 'has_choices':False, 'value':f"{result.subject.id}", 'choices':[], 'is_hidden':False, 'show_label':False},
+                            ] + MAIN_RESULT_FIELDS
                     
+                    # perform a field switch off.
+                    # remove field if it is present in exclude function
+                    fields = [x for x in fields2 if x.get('name') not in FORM_LABEL_HEADS_FOR_RESULT_EXCLUDE]
+                   
                     # append the student object and student code
                     self.students.append((stud, stud.code))
 
                     foundResult = get_results.get(stud.code)
+                    # print(foundResult)
                     if get_results.__contains__(stud.code):
                         foundUserForm(self=self, fields=fields, index=index, foundResult=foundResult, n=n)
                     else:

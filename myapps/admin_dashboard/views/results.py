@@ -14,6 +14,7 @@ from coreattrs.user_permissions_context import UserPermissions
 from django.contrib import messages as django_message
 
 from myschool.forms.result_form import PrintResultForm
+from myschool.models.result import ResultComment
 from ..forms import LoginForm
 from typing import List
 from coreattrs.error_messages import ErrorMessages
@@ -104,3 +105,47 @@ class EditNewResult(TemplateView):
         # return super().get(request, *args, **kwargs)
         return result_edit_student(request=self.request, id=None, query=kwargs, context={})
 
+
+
+
+def resultComment(request):
+    import json
+    try:
+        if request.body:
+            content = {}
+            # 
+            data = json.loads(request.body)
+            data2 = data.copy()
+            data.pop('csrfmiddlewaretoken')
+            data.pop('comment')
+            data.pop('commentor')
+            data.pop('student_code')
+            # 
+            comment = data2.get('comment', 'None')
+            commentor = data2.get('commentor', 'None')
+            student_code = data2.get('student_code', 'None')
+
+            data3 = {
+                "comment":comment,
+                "commentor":commentor
+            }
+            
+            # 
+            dt = ResultComment.objects.all()
+            if dt.filter(**data).exists():
+                dtdata = dt.filter(**data).first()
+                # returns a json
+                if dtdata.comment.__contains__(student_code):
+                    dtdata.comment[student_code] = data3
+                    dtdata.save()
+                    return JsonResponse({"message":'Comment Updated.'})
+                else:
+                    dtdata.comment[student_code] = data3
+                    dtdata.save()
+                    return JsonResponse({"message":'Comment Added.'})
+            else:
+                content[student_code] = data3
+                dt.create(**data, comment=content)
+                return JsonResponse({"message":'Comment Added'})
+    except Exception as e:
+        return JsonResponse({"message":f'{e}'})

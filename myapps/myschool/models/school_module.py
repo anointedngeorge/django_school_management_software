@@ -95,12 +95,14 @@ class Sections(CoreBaseModel, CoreAttrs):
     #     return SectionsForm
     
     def save(self, *args, **kwargs):
+        
         complex_filter = Q(name_id=str(self.name.id)) & Q(classes_id=str(self.classes_id))
+        
         m = self._meta.model.objects.filter(complex_filter)
+        print(m.exists())
         if m.exists():
             pass
         else:
-            self.name_id = str(self.name.id)
             super().save(*args, **kwargs)
 
 
@@ -111,14 +113,14 @@ class Classes(CoreBaseModel, CoreAttrs):
     class Meta:
         verbose_name = 'Classes'
         verbose_name_plural = 'Classes'
+        ordering=('-id',)
         
     def __str__(self) -> str:
         return f"{self.name}"
+    
     def list_display(self):
-        return ['pk','name','desc']
-    # def form(self):
-    #     from myschool.forms.myforms import ClassesForm
-    #     return ClassesForm
+        return ['name','desc']
+
     
     def  save(self, *args, **kwargs):
         # convert the names to upper case

@@ -1,0 +1,77 @@
+{% extends "admin_custom/base.html" %}
+
+
+{% block content %}
+<div class="col-lg-12">
+    <a href="" class="btn btn-sm btn-dark"> Back</a>
+</div>
+<br>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            {% for result in bulk_results  %}
+                {% if result.data %}
+                {% include "admin_custom/results/result_module/teacher_comment/result1.html" %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!--  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function messages({title='', text='Something went wrong!', icon='error'}) {
+        Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        footer: ''
+        });
+    }
+    async function form_teacher_comment() {
+        event.preventDefault();
+        
+        let data = {}
+        const form = event.target;
+        const formData = new FormData(form);
+        
+        // Log the form data to the console (for debugging)
+        for (let [key, value] of formData.entries()) {
+            // console.log(`${key}: ${value}`);
+            data[key] = value;
+        }
+        
+        
+        try {
+            let csrftoken =  document.getElementsByName("csrfmiddlewaretoken")[0].value;
+            
+            const prepare_data_for_export = JSON.stringify(data)
+            
+
+            let url = event.target.action;
+            
+
+            let headers = {'Content-Type': 'application/json', 'X-CSRFToken': csrftoken};
+
+            let options = { method: 'POST', headers: headers, body: prepare_data_for_export };
+            
+            // 
+            await fetch(url, options).then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                }).then(data => {
+                    console.log(data);
+                        msg = data['message']
+                        messages({text:msg, icon:'success'});
+                    }).catch(error => {
+                        messages({text:`${error}`});
+                    });
+        } catch (error) {
+            console.log(error);
+            messages({text:`${error}`});
+        }
+    }
+</script>
+{% endblock content %}

@@ -1,0 +1,905 @@
+Internal Server Error: /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 269, in render
+    t = context.template.engine.get_template(self.filename)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 362, in parse_bits
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'form_output' did not receive value(s) for the argument(s): 'exclude'
+"GET /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change HTTP/1.1" 500 145
+Internal Server Error: /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 269, in render
+    t = context.template.engine.get_template(self.filename)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 362, in parse_bits
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'form_output' did not receive value(s) for the argument(s): 'exclude'
+"GET /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change HTTP/1.1" 500 145
+Internal Server Error: /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 269, in render
+    t = context.template.engine.get_template(self.filename)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 362, in parse_bits
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'form_output' did not receive value(s) for the argument(s): 'exclude'
+"GET /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change HTTP/1.1" 500 145
+Internal Server Error: /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 269, in render
+    t = context.template.engine.get_template(self.filename)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 362, in parse_bits
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'form_output' did not receive value(s) for the argument(s): 'exclude'
+"GET /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change HTTP/1.1" 500 346441
+Internal Server Error: /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 269, in render
+    t = context.template.engine.get_template(self.filename)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 362, in parse_bits
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'form_output' did not receive value(s) for the argument(s): 'exclude'
+"GET /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change HTTP/1.1" 500 346578
+Internal Server Error: /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 269, in render
+    t = context.template.engine.get_template(self.filename)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 130, in compile_func
+    args, kwargs = parse_bits(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/library.py", line 362, in parse_bits
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'form_output' did not receive value(s) for the argument(s): 'exclude'
+"GET /dashboard/11f2fc91-8696-44c2-85ca-16e5daf0be08/a7095771-c2f7-42c8-9501-881769a08b5c/c3997752-4f54-4903-aa90-bdfb61243077/3/3eebaf24-c84c-4dcf-9374-0104bfbf7c3a/2024-2025/change HTTP/1.1" 500 346578
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 197, in render
+    template = context.template.engine.select_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 206, in select_template
+    return self.get_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 567, in comment
+    parser.skip_past("endcomment")
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 526, in skip_past
+    self.unclosed_block_tag([endtag])
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 9: 'comment'. Looking for one of: endcomment.
+"GET /dashboard/ HTTP/1.1" 500 213930
+Internal Server Error: /dashboard/myschool/Section/list
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 208, in render
+    return template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'changelist' with arguments '('', '')' not found. 1 pattern(s) tried: ['dashboard/(?P<appname>[^/]+)/(?P<modelname>[^/]+)/list\\Z']
+"GET /dashboard/myschool/Section/list HTTP/1.1" 500 228596
+Internal Server Error: /dashboard/myschool/Result/list
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 208, in render
+    return template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'changelist' with arguments '('', '')' not found. 1 pattern(s) tried: ['dashboard/(?P<appname>[^/]+)/(?P<modelname>[^/]+)/list\\Z']
+"GET /dashboard/myschool/Result/list HTTP/1.1" 500 228562
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.ResultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.ResultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.ResultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"GET /dashboard/result-comment/ HTTP/1.1" 500 75881
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"GET /dashboard/result-comment/ HTTP/1.1" 500 76018
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"GET /dashboard/result-comment/ HTTP/1.1" 500 76018
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"GET /dashboard/result-comment/ HTTP/1.1" 500 76018
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"GET /dashboard/result-comment/ HTTP/1.1" 500 76018
+Internal Server Error: /dashboard/myschool/resultcomment/list
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/loader_tags.py", line 208, in render
+    return template.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/template/defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'changelist' with arguments '('', '')' not found. 1 pattern(s) tried: ['dashboard/(?P<appname>[^/]+)/(?P<modelname>[^/]+)/list\\Z']
+"GET /dashboard/myschool/resultcomment/list HTTP/1.1" 500 228655
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782
+Internal Server Error: /dashboard/result-comment/
+Traceback (most recent call last):
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/sharashell/DjangoProjects/school_muliple_tenant_application/tenant_env/lib/python3.8/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view admin_dashboard.views.results.resultComment didn't return an HttpResponse object. It returned None instead.
+"POST /dashboard/result-comment/ HTTP/1.1" 500 75782

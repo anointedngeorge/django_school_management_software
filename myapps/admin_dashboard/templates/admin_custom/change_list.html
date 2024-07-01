@@ -3,6 +3,7 @@
 
 
 {% block content %}
+
 {% include "admin_custom/referer.html" with appname=appname modelname=modelname %}
 <div>
     <div class="col-md-12 grid-margin stretch-card">
@@ -28,6 +29,7 @@
     </div>
     {% include "admin_custom/paginator.html" %}
 </div>
+<!-- for search and filter -->
 <script>
     function myFunction() {
   // Declare variables

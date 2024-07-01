@@ -19,6 +19,7 @@ class CoreAttrs:
         return []
     def is_registered(self):
         return True
+    
     def has_action(self):
         return False
     
@@ -56,6 +57,7 @@ class CoreAttrs:
         except Exception as e:
             import traceback
 
+    
     def extra_forms(self):
         try:
             return {}

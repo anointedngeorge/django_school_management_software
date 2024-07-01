@@ -12,6 +12,32 @@
                 {% csrf_token %}
                 <div class="form-group">
                     {{form}}
+                    <!--  -->
+                    <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <label>
+                                Print
+                                <input
+                                    type="radio"
+                                    required
+                                    name="action"
+                                    value="print"
+                                >
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                Comment
+                                <input
+                                    type="radio"
+                                    required
+                                    name="action"
+                                    value="comment"
+                                >
+                            </label>
+                        </div>
+                    </div>
+                    <!--  -->
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-sm btn-primary btn-block">Print</button>
